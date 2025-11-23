@@ -1,0 +1,60 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "F:\\Gabriel Documentos\\ISUR\\2do Semestre\\EFSRT\\ProyectoFinal_Farmacia\\Farmacia\\SistemaFarmacia\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{2D1D6417-4082-453B-A200-7FAE6EDB5ED9}|..\\DAL\\DAL.csproj|f:\\gabriel documentos\\isur\\2do semestre\\efsrt\\proyectofinal_farmacia\\farmacia\\dal\\dalproveedor.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1273C424-EDF5-4380-8CC9-063AF51E56DB}|..\\BL\\BL.csproj|f:\\gabriel documentos\\isur\\2do semestre\\efsrt\\proyectofinal_farmacia\\farmacia\\bl\\blproveedor.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 1,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "blProveedor.cs",
+              "DocumentMoniker": "F:\\Gabriel Documentos\\ISUR\\2do Semestre\\EFSRT\\ProyectoFinal_Farmacia\\Farmacia\\BL\\blProveedor.cs",
+              "RelativeDocumentMoniker": "..\\BL\\blProveedor.cs",
+              "ToolTip": "F:\\Gabriel Documentos\\ISUR\\2do Semestre\\EFSRT\\ProyectoFinal_Farmacia\\Farmacia\\BL\\blProveedor.cs",
+              "RelativeToolTip": "..\\BL\\blProveedor.cs",
+              "ViewState": "AgIAAAkAAAAAAAAAAAAAABQAAAAWAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-22T01:11:15.07Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "dalProveedor.cs",
+              "DocumentMoniker": "F:\\Gabriel Documentos\\ISUR\\2do Semestre\\EFSRT\\ProyectoFinal_Farmacia\\Farmacia\\DAL\\dalProveedor.cs",
+              "RelativeDocumentMoniker": "..\\DAL\\dalProveedor.cs",
+              "ToolTip": "F:\\Gabriel Documentos\\ISUR\\2do Semestre\\EFSRT\\ProyectoFinal_Farmacia\\Farmacia\\DAL\\dalProveedor.cs",
+              "RelativeToolTip": "..\\DAL\\dalProveedor.cs",
+              "ViewState": "AgIAADAAAAAAAAAAAAAqwDUAAAAiAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-22T01:10:02.362Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{34e76e81-ee4a-11d0-ae2e-00a0c90fffc3}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{d78612c7-9962-4b83-95d9-268046dad23a}"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

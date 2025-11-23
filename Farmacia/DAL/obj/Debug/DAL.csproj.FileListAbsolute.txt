@@ -1,0 +1,9 @@
+F:\Gabriel Documentos\ISUR\2do Semestre\EFSRT\Farmacia\DAL\bin\Debug\DAL.dll
+F:\Gabriel Documentos\ISUR\2do Semestre\EFSRT\Farmacia\DAL\bin\Debug\DAL.pdb
+F:\Gabriel Documentos\ISUR\2do Semestre\EFSRT\Farmacia\DAL\bin\Debug\Entidades.dll
+F:\Gabriel Documentos\ISUR\2do Semestre\EFSRT\Farmacia\DAL\bin\Debug\Entidades.pdb
+F:\Gabriel Documentos\ISUR\2do Semestre\EFSRT\Farmacia\DAL\obj\Debug\DAL.csproj.AssemblyReference.cache
+F:\Gabriel Documentos\ISUR\2do Semestre\EFSRT\Farmacia\DAL\obj\Debug\DAL.csproj.CoreCompileInputs.cache
+F:\Gabriel Documentos\ISUR\2do Semestre\EFSRT\Farmacia\DAL\obj\Debug\DAL.csproj.Up2Date
+F:\Gabriel Documentos\ISUR\2do Semestre\EFSRT\Farmacia\DAL\obj\Debug\DAL.dll
+F:\Gabriel Documentos\ISUR\2do Semestre\EFSRT\Farmacia\DAL\obj\Debug\DAL.pdb
