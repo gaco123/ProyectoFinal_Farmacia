@@ -9,58 +9,47 @@ using Entidades;
 namespace DAL {
     public class dalCategoria {
         public void insertar_categoria(clsCategoria xcal){
-            SqlConnection con = new SqlConnection("Server=DESKTOP-HB8K8AS\\MSSQLSERVER01;Database=farmacia;Trusted_Connection=True;");
-            SqlCommand cmd = new SqlCommand();
-            cmd.Connection = con;
-            cmd.CommandText = "categoria_insert";
-            cmd.CommandType = System.Data.CommandType.StoredProcedure;
-            cmd.Parameters.AddWithValue("@nombre", xcal.nombre);
-            cmd.Parameters.AddWithValue("@descripcion", xcal.descripcion);
-            con.Open();
-            cmd.ExecuteNonQuery();
-            con.Close();
+            SQLCon xcon = new SQLCon();
+            xcon.cmd.CommandText = "categoria_insert";
+            xcon.cmd.CommandType = System.Data.CommandType.StoredProcedure;
+            xcon.cmd.Parameters.AddWithValue("@nombre", xcal.nombre);
+            xcon.cmd.Parameters.AddWithValue("@descripcion", xcal.descripcion);
+            xcon.exec_command();
+            xcon.con.Close();
         }
         public clsCategoria seleccionar_categoria(int categoria) {
             clsCategoria xcal = new clsCategoria();
-            SqlConnection con = new SqlConnection("Server=DESKTOP-HB8K8AS\\MSSQLSERVER01;Database=farmacia;Trusted_Connection=True;");
-            SqlCommand cmd = new SqlCommand();
-            cmd.Connection = con;
-            cmd.CommandText = "categoria_select";
-            cmd.CommandType = System.Data.CommandType.StoredProcedure;
-            cmd.Parameters.AddWithValue("@categoria", categoria);
-            con.Open();
-            SqlDataReader reader = cmd.ExecuteReader();
+            SQLCon xcon = new SQLCon();
+            xcon.cmd.CommandText = "categoria_select";
+            xcon.cmd.CommandType = System.Data.CommandType.StoredProcedure;
+            xcon.cmd.Parameters.AddWithValue("@categoria", categoria);
+            xcon.con.Open();
+            SqlDataReader reader = xcon.cmd.ExecuteReader();
             while (reader.Read()) {
                 xcal.id = reader.GetInt32(0);
                 xcal.nombre = reader.GetString(1);
                 xcal.descripcion = reader.GetString(2);
             }
-            con.Close();
+            xcon.con.Close();
             return xcal;
         }
         public void actualizar_categoria(clsCategoria xcal) {
-            SqlConnection con = new SqlConnection("Server=DESKTOP-HB8K8AS\\MSSQLSERVER01;Database=farmacia;Trusted_Connection=True;");
-            SqlCommand cmd = new SqlCommand();
-            cmd.Connection = con;
-            cmd.CommandText = "categoria_update";
-            cmd.CommandType = System.Data.CommandType.StoredProcedure;
-            cmd.Parameters.AddWithValue("@categoria", xcal.id);
-            cmd.Parameters.AddWithValue("@nombre", xcal.nombre);
-            cmd.Parameters.AddWithValue("@descripcion", xcal.descripcion);
-            con.Open();
-            cmd.ExecuteNonQuery();
-            con.Close();
+            SQLCon xcon = new SQLCon();
+            xcon.cmd.CommandText = "categoria_update";
+            xcon.cmd.CommandType = System.Data.CommandType.StoredProcedure;
+            xcon.cmd.Parameters.AddWithValue("@categoria", xcal.id);
+            xcon.cmd.Parameters.AddWithValue("@nombre", xcal.nombre);
+            xcon.cmd.Parameters.AddWithValue("@descripcion", xcal.descripcion);
+            xcon.exec_command();
+            xcon.con.Close();
         }
         public void eliminar_categoria(clsCategoria xcal) {
-            SqlConnection con = new SqlConnection("Server=DESKTOP-HB8K8AS\\MSSQLSERVER01;Database=farmacia;Trusted_Connection=True;");
-            SqlCommand cmd = new SqlCommand();
-            cmd.Connection = con;
-            cmd.CommandText = "categoria_delete";
-            cmd.CommandType = System.Data.CommandType.StoredProcedure;
-            cmd.Parameters.AddWithValue("@categoria", xcal.id);
-            con.Open();
-            cmd.ExecuteNonQuery();
-            con.Close();
+            SQLCon xcon = new SQLCon();
+            xcon.cmd.CommandText = "categoria_delete";
+            xcon.cmd.CommandType = System.Data.CommandType.StoredProcedure;
+            xcon.cmd.Parameters.AddWithValue("@categoria", xcal.id);
+            xcon.exec_command();
+            xcon.con.Close();
         }
     }
 }

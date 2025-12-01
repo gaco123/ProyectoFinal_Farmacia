@@ -24,5 +24,9 @@ namespace BL {
             dalBajaProducto xdbp = new dalBajaProducto();
             xdbp.eliminar_bajaproducto(xbpr);
         }
+        public int contar_bajaproducto() {
+            dalBajaProducto xdbp = new dalBajaProducto();
+            return xdbp.contar_bajaproducto();
+        }
     }
 }

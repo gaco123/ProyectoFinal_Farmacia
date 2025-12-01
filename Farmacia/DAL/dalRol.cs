@@ -9,58 +9,47 @@ using System.Threading.Tasks;
 namespace DAL {
     public class dalRol {
         public void insertar_rol(clsRol xrl) {
-            SqlConnection con = new SqlConnection("Server=DESKTOP-HB8K8AS\\MSSQLSERVER01;Database=farmacia;Trusted_Connection=True;");
-            SqlCommand cmd = new SqlCommand();
-            cmd.Connection = con;
-            cmd.CommandText = "rol_insert";
-            cmd.CommandType = System.Data.CommandType.StoredProcedure;
-            cmd.Parameters.AddWithValue("@nombre", xrl.nombre);
-            cmd.Parameters.AddWithValue("@descripcion", xrl.descripcion);
-            con.Open();
-            cmd.ExecuteNonQuery();
-            con.Close();
+            SQLCon xcon = new SQLCon();
+            xcon.cmd.CommandText = "rol_insert";
+            xcon.cmd.CommandType = System.Data.CommandType.StoredProcedure;
+            xcon.cmd.Parameters.AddWithValue("@nombre", xrl.nombre);
+            xcon.cmd.Parameters.AddWithValue("@descripcion", xrl.descripcion);
+            xcon.exec_command();
+            xcon.con.Close();
         }
         public clsRol seleccionar_rol(int rol) {
             clsRol xrl = new clsRol();
-            SqlConnection con = new SqlConnection("Server=DESKTOP-HB8K8AS\\MSSQLSERVER01;Database=farmacia;Trusted_Connection=True;");
-            SqlCommand cmd = new SqlCommand();
-            cmd.Connection = con;
-            cmd.CommandText = "rol_select";
-            cmd.CommandType = System.Data.CommandType.StoredProcedure;
-            cmd.Parameters.AddWithValue("@rol", rol);
-            con.Open();
-            SqlDataReader reader = cmd.ExecuteReader();
+            SQLCon xcon = new SQLCon();
+            xcon.cmd.CommandText = "rol_select";
+            xcon.cmd.CommandType = System.Data.CommandType.StoredProcedure;
+            xcon.cmd.Parameters.AddWithValue("@rol", rol);
+            xcon.con.Open();
+            SqlDataReader reader = xcon.cmd.ExecuteReader();
             while (reader.Read()) {
                 xrl.id = reader.GetInt32(0);
                 xrl.nombre = reader.GetString(1);
                 xrl.descripcion = reader.GetString(2);
             }
-            con.Close();
+            xcon.con.Close();
             return xrl;
         }
         public void actualizar_rol(clsRol xrl) {
-            SqlConnection con = new SqlConnection("Server=DESKTOP-HB8K8AS\\MSSQLSERVER01;Database=farmacia;Trusted_Connection=True;");
-            SqlCommand cmd = new SqlCommand();
-            cmd.Connection = con;
-            cmd.CommandText = "rol_update";
-            cmd.CommandType = System.Data.CommandType.StoredProcedure;
-            cmd.Parameters.AddWithValue("@rol", xrl.id);
-            cmd.Parameters.AddWithValue("@nombre", xrl.nombre);
-            cmd.Parameters.AddWithValue("@descripcion", xrl.descripcion);
-            con.Open();
-            cmd.ExecuteNonQuery();
-            con.Close();
+            SQLCon xcon = new SQLCon();
+            xcon.cmd.CommandText = "rol_update";
+            xcon.cmd.CommandType = System.Data.CommandType.StoredProcedure;
+            xcon.cmd.Parameters.AddWithValue("@rol", xrl.id);
+            xcon.cmd.Parameters.AddWithValue("@nombre", xrl.nombre);
+            xcon.cmd.Parameters.AddWithValue("@descripcion", xrl.descripcion);
+            xcon.exec_command();
+            xcon.con.Close();
         }
         public void eliminar_rol(clsRol xrl) {
-            SqlConnection con = new SqlConnection("Server=DESKTOP-HB8K8AS\\MSSQLSERVER01;Database=farmacia;Trusted_Connection=True;");
-            SqlCommand cmd = new SqlCommand();
-            cmd.Connection = con;
-            cmd.CommandText = "rol_delete";
-            cmd.CommandType = System.Data.CommandType.StoredProcedure;
-            cmd.Parameters.AddWithValue("@rol", xrl.id);
-            con.Open();
-            cmd.ExecuteNonQuery();
-            con.Close();
+            SQLCon xcon = new SQLCon();
+            xcon.cmd.CommandText = "rol_delete";
+            xcon.cmd.CommandType = System.Data.CommandType.StoredProcedure;
+            xcon.cmd.Parameters.AddWithValue("@rol", xrl.id);
+            xcon.exec_command();
+            xcon.con.Close();
         }
     }
 }

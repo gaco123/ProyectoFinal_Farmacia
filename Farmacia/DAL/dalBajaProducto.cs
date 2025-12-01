@@ -9,65 +9,65 @@ using System.Threading.Tasks;
 namespace DAL {
     public class dalBajaProducto {
         public void insertar_bajaproducto(clsBajaProducto xbpr) {
-            SqlConnection con = new SqlConnection("Server=DESKTOP-HB8K8AS\\MSSQLSERVER01;Database=farmacia;Trusted_Connection=True;");
-            SqlCommand cmd = new SqlCommand();
-            cmd.Connection = con;
-            cmd.CommandText = "bajaproducto_insert";
-            cmd.CommandType = System.Data.CommandType.StoredProcedure;
-            cmd.Parameters.AddWithValue("@producto", xbpr.producto);
-            cmd.Parameters.AddWithValue("@fecha_baja", xbpr.fecha_baja);
-            cmd.Parameters.AddWithValue("@motivo", xbpr.motivo);
-            cmd.Parameters.AddWithValue("@usuario", xbpr.usuario);
-            cmd.Parameters.AddWithValue("@observaciones", xbpr.observaciones);
-            con.Open();
-            cmd.ExecuteNonQuery();
-            con.Close();
+            SQLCon xcon = new SQLCon();
+            xcon.cmd.CommandText = "bajaproducto_insert";
+            xcon.cmd.CommandType = System.Data.CommandType.StoredProcedure;
+            xcon.cmd.Parameters.AddWithValue("@producto", xbpr.producto);
+            xcon.cmd.Parameters.AddWithValue("@fecha_baja", xbpr.fecha_baja);
+            xcon.cmd.Parameters.AddWithValue("@motivo", xbpr.motivo);
+            xcon.cmd.Parameters.AddWithValue("@usuario", xbpr.usuario);
+            xcon.cmd.Parameters.AddWithValue("@observaciones", xbpr.observaciones);
+            xcon.exec_command();
+            xcon.con.Close();
         }
         public clsBajaProducto seleccionar_bajaproducto(int producto) {
             clsBajaProducto xbpr = new clsBajaProducto();
-            SqlConnection con = new SqlConnection("Server=DESKTOP-HB8K8AS\\MSSQLSERVER01;Database=farmacia;Trusted_Connection=True;");
-            SqlCommand cmd = new SqlCommand();
-            cmd.Connection = con;
-            cmd.CommandText = "bajaproducto_select";
-            cmd.CommandType = System.Data.CommandType.StoredProcedure;
-            cmd.Parameters.AddWithValue("@producto", producto);
-            con.Open();
-            SqlDataReader reader = cmd.ExecuteReader();
+            SQLCon xcon = new SQLCon();
+            xcon.cmd.CommandText = "bajaproducto_select";
+            xcon.cmd.CommandType = System.Data.CommandType.StoredProcedure;
+            xcon.cmd.Parameters.AddWithValue("@producto", producto);
+            xcon.con.Open();
+            SqlDataReader reader = xcon.cmd.ExecuteReader();
             while (reader.Read()) {
-                xbpr.producto = reader.GetInt32(1);
-                xbpr.fecha_baja = reader.GetDateTime(2);
-                xbpr.motivo = reader.GetString(3);
-                xbpr.usuario = reader.GetInt32(4);
-                xbpr.observaciones = reader.GetString(5);
+                xbpr.producto = reader.GetInt32(0);
+                xbpr.fecha_baja = reader.GetDateTime(1);
+                xbpr.motivo = reader.GetString(2);
+                xbpr.usuario = reader.GetInt32(3);
+                xbpr.observaciones = reader.GetString(4);
             }
-            con.Close();
+            xcon.con.Close();
             return xbpr;
         }
-        public void actualizar_bajaproducto(clsBajaProducto xbpr) {
-            SqlConnection con = new SqlConnection("Server=DESKTOP-HB8K8AS\\MSSQLSERVER01;Database=farmacia;Trusted_Connection=True;");
-            SqlCommand cmd = new SqlCommand();
-            cmd.Connection = con;
-            cmd.CommandText = "bajaproducto_update";
-            cmd.CommandType = System.Data.CommandType.StoredProcedure;
-            cmd.Parameters.AddWithValue("@producto", xbpr.producto);
-            cmd.Parameters.AddWithValue("@fecha_baja", xbpr.fecha_baja);
-            cmd.Parameters.AddWithValue("@motivo", xbpr.motivo);
-            cmd.Parameters.AddWithValue("@usuario", xbpr.usuario);
-            cmd.Parameters.AddWithValue("@observaciones", xbpr.observaciones);
-            con.Open();
-            cmd.ExecuteNonQuery();
-            con.Close();
+        public void actualizar_bajaproducto(clsBajaProducto xbpr) { 
+            SQLCon xcon = new SQLCon();
+            xcon.cmd.CommandText = "bajaproducto_update";
+            xcon.cmd.CommandType = System.Data.CommandType.StoredProcedure;
+            xcon.cmd.Parameters.AddWithValue("@producto", xbpr.producto);
+            xcon.cmd.Parameters.AddWithValue("@fecha_baja", xbpr.fecha_baja);
+            xcon.cmd.Parameters.AddWithValue("@motivo", xbpr.motivo);
+            xcon.cmd.Parameters.AddWithValue("@usuario", xbpr.usuario);
+            xcon.cmd.Parameters.AddWithValue("@observaciones", xbpr.observaciones);
+            xcon.exec_command();
+            xcon.con.Close();
         }
         public void eliminar_bajaproducto(clsBajaProducto xbpr) {
-            SqlConnection con = new SqlConnection("Server=DESKTOP-HB8K8AS\\MSSQLSERVER01;Database=farmacia;Trusted_Connection=True;");
-            SqlCommand cmd = new SqlCommand();
-            cmd.Connection = con;
-            cmd.CommandText = "bajaproducto_delete";
-            cmd.CommandType = System.Data.CommandType.StoredProcedure;
-            cmd.Parameters.AddWithValue("@producto", xbpr.producto);
-            con.Open();
-            cmd.ExecuteNonQuery();
-            con.Close();
+            SQLCon xcon = new SQLCon();
+            xcon.cmd.CommandText = "bajaproducto_delete";
+            xcon.cmd.CommandType = System.Data.CommandType.StoredProcedure;
+            xcon.cmd.Parameters.AddWithValue("@producto", xbpr.producto);
+            xcon.exec_command();
+            xcon.con.Close();
+        }
+        public int contar_bajaproducto() {
+            SQLCon xcon = new SQLCon();
+            int numfilas = 0;
+            xcon.con.Open();
+            SqlDataReader reader = xcon.cmd.ExecuteReader();
+            while (reader.Read()) {
+                numfilas = reader.GetInt32(0);
+            }
+            xcon.con.Close();
+            return numfilas;
         }
     }
 }

@@ -9,39 +9,34 @@ using Entidades;
 namespace DAL {
     public class dalProducto {
         public void insetar_producto(clsProducto xpro) {
-            SqlConnection con = new SqlConnection("Server=DESKTOP-HB8K8AS\\MSSQLSERVER01;Database=farmacia;Trusted_Connection=True;");
-            SqlCommand cmd = new SqlCommand();
-            cmd.Connection = con;
-            cmd.CommandText = "producto_insert";
-            cmd.CommandType = System.Data.CommandType.StoredProcedure;
-            cmd.Parameters.AddWithValue("@nombre", xpro.nombre);
-            cmd.Parameters.AddWithValue("@descripcion", xpro.descripcion);
-            cmd.Parameters.AddWithValue("@principio_activo", xpro.principio_activo);
-            cmd.Parameters.AddWithValue("@laboratorio", xpro.laboratorio);
-            cmd.Parameters.AddWithValue("@categoria", xpro.categoria);
-            cmd.Parameters.AddWithValue("@concentracion", xpro.concentracion);
-            cmd.Parameters.AddWithValue("@unidad_medida", xpro.unidad_medida);
-            cmd.Parameters.AddWithValue("@presentacion", xpro.presentacion);
-            cmd.Parameters.AddWithValue("@stock_actual", xpro.stock_actual);
-            cmd.Parameters.AddWithValue("@stock_minimo", xpro.stock_minimo);
-            cmd.Parameters.AddWithValue("@stock_maximo", xpro.stock_maximo);
-            cmd.Parameters.AddWithValue("@ubicacion", xpro.ubicacion);
-            cmd.Parameters.AddWithValue("@precio_unitario", xpro.precio_unitario);
-            cmd.Parameters.AddWithValue("@costo_unitario", xpro.costo_unitario);
-            con.Open();
-            cmd.ExecuteNonQuery();
-            con.Close();
+            SQLCon xcon = new SQLCon();
+            xcon.cmd.CommandText = "producto_insert";
+            xcon.cmd.CommandType = System.Data.CommandType.StoredProcedure;
+            xcon.cmd.Parameters.AddWithValue("@nombre", xpro.nombre);
+            xcon.cmd.Parameters.AddWithValue("@descripcion", xpro.descripcion);
+            xcon.cmd.Parameters.AddWithValue("@principio_activo", xpro.principio_activo);
+            xcon.cmd.Parameters.AddWithValue("@laboratorio", xpro.laboratorio);
+            xcon.cmd.Parameters.AddWithValue("@categoria", xpro.categoria);
+            xcon.cmd.Parameters.AddWithValue("@concentracion", xpro.concentracion);
+            xcon.cmd.Parameters.AddWithValue("@unidad_medida", xpro.unidad_medida);
+            xcon.cmd.Parameters.AddWithValue("@presentacion", xpro.presentacion);
+            xcon.cmd.Parameters.AddWithValue("@stock_actual", xpro.stock_actual);
+            xcon.cmd.Parameters.AddWithValue("@stock_minimo", xpro.stock_minimo);
+            xcon.cmd.Parameters.AddWithValue("@stock_maximo", xpro.stock_maximo);
+            xcon.cmd.Parameters.AddWithValue("@ubicacion", xpro.ubicacion);
+            xcon.cmd.Parameters.AddWithValue("@precio_unitario", xpro.precio_unitario);
+            xcon.cmd.Parameters.AddWithValue("@costo_unitario", xpro.costo_unitario);
+            xcon.exec_command();
+            xcon.con.Close();
         }
         public clsProducto seleccionar_producto(int producto) {
             clsProducto xpro = new clsProducto();
-            SqlConnection con = new SqlConnection("Server=DESKTOP-HB8K8AS\\MSSQLSERVER01;Database=farmacia;Trusted_Connection=True;");
-            SqlCommand cmd = new SqlCommand();
-            cmd.Connection = con;
-            cmd.CommandText = "registrostock_select";
-            cmd.CommandType = System.Data.CommandType.StoredProcedure;
-            cmd.Parameters.AddWithValue("@producto", producto);
-            con.Open();
-            SqlDataReader reader = cmd.ExecuteReader();
+            SQLCon xcon = new SQLCon();
+            xcon.cmd.CommandText = "producto_select";
+            xcon.cmd.CommandType = System.Data.CommandType.StoredProcedure;
+            xcon.cmd.Parameters.AddWithValue("@producto", producto);
+            xcon.con.Open();
+            SqlDataReader reader = xcon.cmd.ExecuteReader();
             while (reader.Read()) {
                 xpro.id = reader.GetInt32(0);
                 xpro.nombre = reader.GetString(1);
@@ -60,44 +55,38 @@ namespace DAL {
                 xpro.costo_unitario = reader.GetDouble(14);
                 xpro.estado = reader.GetString(15);
             }
-            con.Close();
+            xcon.con.Close();
             return xpro;
         }
         public void actualizar_producto(clsProducto xpro) {
-            SqlConnection con = new SqlConnection("Server=DESKTOP-HB8K8AS\\MSSQLSERVER01;Database=farmacia;Trusted_Connection=True;");
-            SqlCommand cmd = new SqlCommand();
-            cmd.Connection = con;
-            cmd.CommandText = "producto_update";
-            cmd.CommandType = System.Data.CommandType.StoredProcedure;
-            cmd.Parameters.AddWithValue("@producto", xpro.id);
-            cmd.Parameters.AddWithValue("@nombre", xpro.nombre);
-            cmd.Parameters.AddWithValue("@descripcion", xpro.descripcion);
-            cmd.Parameters.AddWithValue("@principio_activo", xpro.principio_activo);
-            cmd.Parameters.AddWithValue("@laboratorio", xpro.laboratorio);
-            cmd.Parameters.AddWithValue("@categoria", xpro.categoria);
-            cmd.Parameters.AddWithValue("@concentracion", xpro.concentracion);
-            cmd.Parameters.AddWithValue("@unidad_medida", xpro.unidad_medida);
-            cmd.Parameters.AddWithValue("@presentacion", xpro.presentacion);
-            cmd.Parameters.AddWithValue("@stock_actual", xpro.stock_actual);
-            cmd.Parameters.AddWithValue("@stock_minimo", xpro.stock_minimo);
-            cmd.Parameters.AddWithValue("@stock_maximo", xpro.stock_maximo);
-            cmd.Parameters.AddWithValue("@ubicacion", xpro.ubicacion);
-            cmd.Parameters.AddWithValue("@precio_unitario", xpro.precio_unitario);
-            cmd.Parameters.AddWithValue("@costo_unitario", xpro.costo_unitario);
-            con.Open();
-            cmd.ExecuteNonQuery();
-            con.Close();
+            SQLCon xcon = new SQLCon();
+            xcon.cmd.CommandText = "producto_update";
+            xcon.cmd.CommandType = System.Data.CommandType.StoredProcedure;
+            xcon.cmd.Parameters.AddWithValue("@producto", xpro.id);
+            xcon.cmd.Parameters.AddWithValue("@nombre", xpro.nombre);
+            xcon.cmd.Parameters.AddWithValue("@descripcion", xpro.descripcion);
+            xcon.cmd.Parameters.AddWithValue("@principio_activo", xpro.principio_activo);
+            xcon.cmd.Parameters.AddWithValue("@laboratorio", xpro.laboratorio);
+            xcon.cmd.Parameters.AddWithValue("@categoria", xpro.categoria);
+            xcon.cmd.Parameters.AddWithValue("@concentracion", xpro.concentracion);
+            xcon.cmd.Parameters.AddWithValue("@unidad_medida", xpro.unidad_medida);
+            xcon.cmd.Parameters.AddWithValue("@presentacion", xpro.presentacion);
+            xcon.cmd.Parameters.AddWithValue("@stock_actual", xpro.stock_actual);
+            xcon.cmd.Parameters.AddWithValue("@stock_minimo", xpro.stock_minimo);
+            xcon.cmd.Parameters.AddWithValue("@stock_maximo", xpro.stock_maximo);
+            xcon.cmd.Parameters.AddWithValue("@ubicacion", xpro.ubicacion);
+            xcon.cmd.Parameters.AddWithValue("@precio_unitario", xpro.precio_unitario);
+            xcon.cmd.Parameters.AddWithValue("@costo_unitario", xpro.costo_unitario);
+            xcon.exec_command();
+            xcon.con.Close();
         }
         public void eliminar_producto(clsProducto xpro) {
-            SqlConnection con = new SqlConnection("Server=DESKTOP-HB8K8AS\\MSSQLSERVER01;Database=farmacia;Trusted_Connection=True;");
-            SqlCommand cmd = new SqlCommand();
-            cmd.Connection = con;
-            cmd.CommandText = "producto_delete";
-            cmd.CommandType = System.Data.CommandType.StoredProcedure;
-            cmd.Parameters.AddWithValue("@producto", xpro.id);
-            con.Open();
-            cmd.ExecuteNonQuery();
-            con.Close();
+            SQLCon xcon = new SQLCon();
+            xcon.cmd.CommandText = "producto_delete";
+            xcon.cmd.CommandType = System.Data.CommandType.StoredProcedure;
+            xcon.cmd.Parameters.AddWithValue("@producto", xpro.id);
+            xcon.exec_command();
+            xcon.con.Close();
         }
     }
 }

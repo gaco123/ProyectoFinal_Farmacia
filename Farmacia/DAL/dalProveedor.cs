@@ -9,26 +9,24 @@ using System.Threading.Tasks;
 namespace DAL {
     public class dalProveedor {
         public void insertar_proveedor(clsProveedor xpv) {
-            SqlConnection con = new SqlConnection("Server=DESKTOP-HB8K8AS\\MSSQLSERVER01;Database=farmacia;Trusted_Connection=True;");
-            SqlCommand cmd = new SqlCommand();
-            cmd.Connection = con;
-            cmd.CommandText = "proveedor_insert";
-            cmd.CommandType = System.Data.CommandType.StoredProcedure;
-            cmd.Parameters.AddWithValue("@nombre", xpv.nombre);
-            cmd.Parameters.AddWithValue("@descripcion", xpv.descripcion);
-            cmd.Parameters.AddWithValue("@telefono", xpv.telefono);
-            cmd.Parameters.AddWithValue("@direccion", xpv.direccion);
+            SQLCon xcon = new SQLCon();
+            xcon.cmd.CommandText = "proveedor_insert";
+            xcon.cmd.CommandType = System.Data.CommandType.StoredProcedure;
+            xcon.cmd.Parameters.AddWithValue("@nombre", xpv.nombre);
+            xcon.cmd.Parameters.AddWithValue("@descripcion", xpv.descripcion);
+            xcon.cmd.Parameters.AddWithValue("@telefono", xpv.telefono);
+            xcon.cmd.Parameters.AddWithValue("@direccion", xpv.direccion);
+            xcon.exec_command();
+            xcon.con.Close();
         }
         public clsProveedor seleccionar_proveedor(int proveedor) {
             clsProveedor xpv = new clsProveedor();
-            SqlConnection con = new SqlConnection("Server=DESKTOP-HB8K8AS\\MSSQLSERVER01;Database=farmacia;Trusted_Connection=True;");
-            SqlCommand cmd = new SqlCommand();
-            cmd.Connection = con;
-            cmd.CommandText = "proveedor_select";
-            cmd.CommandType = System.Data.CommandType.StoredProcedure;
-            cmd.Parameters.AddWithValue("@proveedor", proveedor);
-            con.Open();
-            SqlDataReader reader = cmd.ExecuteReader();
+            SQLCon xcon = new SQLCon();
+            xcon.cmd.CommandText = "proveedor_select";
+            xcon.cmd.CommandType = System.Data.CommandType.StoredProcedure;
+            xcon.cmd.Parameters.AddWithValue("@proveedor", proveedor);
+            xcon.con.Open();
+            SqlDataReader reader = xcon.cmd.ExecuteReader();
             while (reader.Read()) {
                 xpv.id = reader.GetInt32(0);
                 xpv.nombre = reader.GetString(1);
@@ -36,34 +34,28 @@ namespace DAL {
                 xpv.telefono = reader.GetString(3);
                 xpv.direccion = reader.GetString(4);
             }
-            con.Close();
+            xcon.con.Close();
             return xpv;
         }
         public void actualizar_proveedor(clsProveedor xpv) {
-            SqlConnection con = new SqlConnection("Server=DESKTOP-HB8K8AS\\MSSQLSERVER01;Database=farmacia;Trusted_Connection=True;");
-            SqlCommand cmd = new SqlCommand();
-            cmd.Connection = con;
-            cmd.CommandText = "proveedor_update";
-            cmd.CommandType = System.Data.CommandType.StoredProcedure;
-            cmd.Parameters.AddWithValue("@proveedor", xpv.id);
-            cmd.Parameters.AddWithValue("@nombre", xpv.nombre);
-            cmd.Parameters.AddWithValue("@descripcion", xpv.descripcion);
-            cmd.Parameters.AddWithValue("@telefono", xpv.telefono);
-            cmd.Parameters.AddWithValue("@direccion", xpv.direccion);
-            con.Open();
-            cmd.ExecuteNonQuery();
-            con.Close();
+            SQLCon xcon = new SQLCon();
+            xcon.cmd.CommandText = "proveedor_update";
+            xcon.cmd.CommandType = System.Data.CommandType.StoredProcedure;
+            xcon.cmd.Parameters.AddWithValue("@proveedor", xpv.id);
+            xcon.cmd.Parameters.AddWithValue("@nombre", xpv.nombre);
+            xcon.cmd.Parameters.AddWithValue("@descripcion", xpv.descripcion);
+            xcon.cmd.Parameters.AddWithValue("@telefono", xpv.telefono);
+            xcon.cmd.Parameters.AddWithValue("@direccion", xpv.direccion);
+            xcon.exec_command();
+            xcon.con.Close();
         }
         public void eliminar_proveedor(clsProveedor xpv) {
-            SqlConnection con = new SqlConnection("Server=DESKTOP-HB8K8AS\\MSSQLSERVER01;Database=farmacia;Trusted_Connection=True;");
-            SqlCommand cmd = new SqlCommand();
-            cmd.Connection = con;
-            cmd.CommandText = "proveedor_delete";
-            cmd.CommandType = System.Data.CommandType.StoredProcedure;
-            cmd.Parameters.AddWithValue("@proveedor", xpv.id);
-            con.Open();
-            cmd.ExecuteNonQuery();
-            con.Close();
+            SQLCon xcon = new SQLCon();
+            xcon.cmd.CommandText = "proveedor_delete";
+            xcon.cmd.CommandType = System.Data.CommandType.StoredProcedure;
+            xcon.cmd.Parameters.AddWithValue("@proveedor", xpv.id);
+            xcon.exec_command();
+            xcon.con.Close();
         }
     }
 }
