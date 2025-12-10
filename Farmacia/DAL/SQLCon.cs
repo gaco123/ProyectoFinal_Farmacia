@@ -10,7 +10,7 @@ namespace DAL {
         public SqlConnection con;
         public SqlCommand cmd;
         public SQLCon() {
-            con = new SqlConnection("Server=DESKTOP-HB8K8AS\\MSSQLSERVER01;Database=farmacia;Trusted_Connection=True;");
+            con = new SqlConnection("Server=DESKTOP-60FL35T;Database=farmacia;Trusted_Connection=True;");
             cmd = new SqlCommand();
             cmd.Connection = con;
         }

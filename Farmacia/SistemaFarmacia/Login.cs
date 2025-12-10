@@ -27,8 +27,10 @@ namespace SistemaFarmacia {
                 for(int i = 1; i < num+1; i++) {
                     clsUsuario temp = blu.leer_usuario(i);
                     if ((txtUsuario.Text == temp.username) && (txtContrasena.Text == temp.contrasena)) {
-                        //Saltar a la pagina principal del programa
-                        this.Close();
+                        VentanaPrincipal ven = new VentanaPrincipal(this);
+                        ven.Show();
+                        this.Hide();
+                        return;
                     }
                 }
             }

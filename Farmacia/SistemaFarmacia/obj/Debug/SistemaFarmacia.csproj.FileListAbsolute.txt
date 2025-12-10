@@ -56,3 +56,4 @@ D:\ISUR2\EFSRT\ProyectoFinal_Farmacia\Farmacia\SistemaFarmacia\obj\Debug\Sistema
 D:\ISUR2\EFSRT\ProyectoFinal_Farmacia\Farmacia\SistemaFarmacia\obj\Debug\SistemaF.1971CABD.Up2Date
 D:\ISUR2\EFSRT\ProyectoFinal_Farmacia\Farmacia\SistemaFarmacia\obj\Debug\SistemaFarmacia.exe
 D:\ISUR2\EFSRT\ProyectoFinal_Farmacia\Farmacia\SistemaFarmacia\obj\Debug\SistemaFarmacia.pdb
+D:\ISUR2\EFSRT\ProyectoFinal_Farmacia\Farmacia\SistemaFarmacia\obj\Debug\SistemaFarmacia.VentanaPrincipal.resources
