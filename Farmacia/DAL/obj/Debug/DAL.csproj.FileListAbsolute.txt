@@ -16,3 +16,12 @@ F:\Gabriel Documentos\ISUR\2do Semestre\EFSRT\ProyectoFinal_Farmacia\Farmacia\DA
 F:\Gabriel Documentos\ISUR\2do Semestre\EFSRT\ProyectoFinal_Farmacia\Farmacia\DAL\obj\Debug\DAL.csproj.Up2Date
 F:\Gabriel Documentos\ISUR\2do Semestre\EFSRT\ProyectoFinal_Farmacia\Farmacia\DAL\obj\Debug\DAL.dll
 F:\Gabriel Documentos\ISUR\2do Semestre\EFSRT\ProyectoFinal_Farmacia\Farmacia\DAL\obj\Debug\DAL.pdb
+D:\ISUR2\EFSRT\ProyectoFinal_Farmacia\Farmacia\DAL\bin\Debug\DAL.dll
+D:\ISUR2\EFSRT\ProyectoFinal_Farmacia\Farmacia\DAL\bin\Debug\DAL.pdb
+D:\ISUR2\EFSRT\ProyectoFinal_Farmacia\Farmacia\DAL\bin\Debug\Entidades.dll
+D:\ISUR2\EFSRT\ProyectoFinal_Farmacia\Farmacia\DAL\bin\Debug\Entidades.pdb
+D:\ISUR2\EFSRT\ProyectoFinal_Farmacia\Farmacia\DAL\obj\Debug\DAL.csproj.AssemblyReference.cache
+D:\ISUR2\EFSRT\ProyectoFinal_Farmacia\Farmacia\DAL\obj\Debug\DAL.csproj.CoreCompileInputs.cache
+D:\ISUR2\EFSRT\ProyectoFinal_Farmacia\Farmacia\DAL\obj\Debug\DAL.csproj.Up2Date
+D:\ISUR2\EFSRT\ProyectoFinal_Farmacia\Farmacia\DAL\obj\Debug\DAL.dll
+D:\ISUR2\EFSRT\ProyectoFinal_Farmacia\Farmacia\DAL\obj\Debug\DAL.pdb

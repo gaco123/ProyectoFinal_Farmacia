@@ -36,3 +36,23 @@ F:\Gabriel Documentos\ISUR\2do Semestre\EFSRT\ProyectoFinal_Farmacia\Farmacia\Si
 F:\Gabriel Documentos\ISUR\2do Semestre\EFSRT\ProyectoFinal_Farmacia\Farmacia\SistemaFarmacia\obj\Debug\SistemaFarmacia.pdb
 F:\Gabriel Documentos\ISUR\2do Semestre\EFSRT\ProyectoFinal_Farmacia\Farmacia\SistemaFarmacia\obj\Debug\SistemaFarmacia.Login.resources
 F:\Gabriel Documentos\ISUR\2do Semestre\EFSRT\ProyectoFinal_Farmacia\Farmacia\SistemaFarmacia\obj\Debug\SistemaFarmacia.Registro.resources
+D:\ISUR2\EFSRT\ProyectoFinal_Farmacia\Farmacia\SistemaFarmacia\bin\Debug\SistemaFarmacia.exe.config
+D:\ISUR2\EFSRT\ProyectoFinal_Farmacia\Farmacia\SistemaFarmacia\bin\Debug\SistemaFarmacia.exe
+D:\ISUR2\EFSRT\ProyectoFinal_Farmacia\Farmacia\SistemaFarmacia\bin\Debug\SistemaFarmacia.pdb
+D:\ISUR2\EFSRT\ProyectoFinal_Farmacia\Farmacia\SistemaFarmacia\bin\Debug\BL.dll
+D:\ISUR2\EFSRT\ProyectoFinal_Farmacia\Farmacia\SistemaFarmacia\bin\Debug\Entidades.dll
+D:\ISUR2\EFSRT\ProyectoFinal_Farmacia\Farmacia\SistemaFarmacia\bin\Debug\DAL.dll
+D:\ISUR2\EFSRT\ProyectoFinal_Farmacia\Farmacia\SistemaFarmacia\bin\Debug\BL.pdb
+D:\ISUR2\EFSRT\ProyectoFinal_Farmacia\Farmacia\SistemaFarmacia\bin\Debug\Entidades.pdb
+D:\ISUR2\EFSRT\ProyectoFinal_Farmacia\Farmacia\SistemaFarmacia\bin\Debug\DAL.pdb
+D:\ISUR2\EFSRT\ProyectoFinal_Farmacia\Farmacia\SistemaFarmacia\obj\Debug\SistemaFarmacia.csproj.AssemblyReference.cache
+D:\ISUR2\EFSRT\ProyectoFinal_Farmacia\Farmacia\SistemaFarmacia\obj\Debug\SistemaFarmacia.exe.config
+D:\ISUR2\EFSRT\ProyectoFinal_Farmacia\Farmacia\SistemaFarmacia\obj\Debug\SistemaFarmacia.Login.resources
+D:\ISUR2\EFSRT\ProyectoFinal_Farmacia\Farmacia\SistemaFarmacia\obj\Debug\SistemaFarmacia.Pruebas.resources
+D:\ISUR2\EFSRT\ProyectoFinal_Farmacia\Farmacia\SistemaFarmacia\obj\Debug\SistemaFarmacia.Properties.Resources.resources
+D:\ISUR2\EFSRT\ProyectoFinal_Farmacia\Farmacia\SistemaFarmacia\obj\Debug\SistemaFarmacia.Registro.resources
+D:\ISUR2\EFSRT\ProyectoFinal_Farmacia\Farmacia\SistemaFarmacia\obj\Debug\SistemaFarmacia.csproj.GenerateResource.cache
+D:\ISUR2\EFSRT\ProyectoFinal_Farmacia\Farmacia\SistemaFarmacia\obj\Debug\SistemaFarmacia.csproj.CoreCompileInputs.cache
+D:\ISUR2\EFSRT\ProyectoFinal_Farmacia\Farmacia\SistemaFarmacia\obj\Debug\SistemaF.1971CABD.Up2Date
+D:\ISUR2\EFSRT\ProyectoFinal_Farmacia\Farmacia\SistemaFarmacia\obj\Debug\SistemaFarmacia.exe
+D:\ISUR2\EFSRT\ProyectoFinal_Farmacia\Farmacia\SistemaFarmacia\obj\Debug\SistemaFarmacia.pdb

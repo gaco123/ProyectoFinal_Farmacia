@@ -1,34 +1,22 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "F:\\Gabriel Documentos\\ISUR\\2do Semestre\\EFSRT\\ProyectoFinal_Farmacia\\Farmacia\\SistemaFarmacia\\",
+  "WorkspaceRootPath": "D:\\ISUR2\\EFSRT\\ProyectoFinal_Farmacia\\Farmacia\\SistemaFarmacia\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{422DD4B9-2DE0-4C4C-920A-527164C42DF4}|SistemaFarmacia.csproj|f:\\gabriel documentos\\isur\\2do semestre\\efsrt\\proyectofinal_farmacia\\farmacia\\sistemafarmacia\\registro.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{422DD4B9-2DE0-4C4C-920A-527164C42DF4}|SistemaFarmacia.csproj|solutionrelative:registro.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{422DD4B9-2DE0-4C4C-920A-527164C42DF4}|SistemaFarmacia.csproj|D:\\ISUR2\\EFSRT\\ProyectoFinal_Farmacia\\Farmacia\\SistemaFarmacia\\ventanaprincipal.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{422DD4B9-2DE0-4C4C-920A-527164C42DF4}|SistemaFarmacia.csproj|solutionrelative:ventanaprincipal.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{422DD4B9-2DE0-4C4C-920A-527164C42DF4}|SistemaFarmacia.csproj|F:\\Gabriel Documentos\\ISUR\\2do Semestre\\EFSRT\\ProyectoFinal_Farmacia\\Farmacia\\SistemaFarmacia\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{422DD4B9-2DE0-4C4C-920A-527164C42DF4}|SistemaFarmacia.csproj|d:\\isur2\\efsrt\\proyectofinal_farmacia\\farmacia\\sistemafarmacia\\ventanaprincipal.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{422DD4B9-2DE0-4C4C-920A-527164C42DF4}|SistemaFarmacia.csproj|solutionrelative:ventanaprincipal.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{422DD4B9-2DE0-4C4C-920A-527164C42DF4}|SistemaFarmacia.csproj|D:\\ISUR2\\EFSRT\\ProyectoFinal_Farmacia\\Farmacia\\SistemaFarmacia\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{422DD4B9-2DE0-4C4C-920A-527164C42DF4}|SistemaFarmacia.csproj|solutionrelative:program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{422DD4B9-2DE0-4C4C-920A-527164C42DF4}|SistemaFarmacia.csproj|F:\\Gabriel Documentos\\ISUR\\2do Semestre\\EFSRT\\ProyectoFinal_Farmacia\\Farmacia\\SistemaFarmacia\\registro.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{422DD4B9-2DE0-4C4C-920A-527164C42DF4}|SistemaFarmacia.csproj|solutionrelative:registro.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{422DD4B9-2DE0-4C4C-920A-527164C42DF4}|SistemaFarmacia.csproj|F:\\Gabriel Documentos\\ISUR\\2do Semestre\\EFSRT\\ProyectoFinal_Farmacia\\Farmacia\\SistemaFarmacia\\registro.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
-      "RelativeMoniker": "D:0:0:{422DD4B9-2DE0-4C4C-920A-527164C42DF4}|SistemaFarmacia.csproj|solutionrelative:registro.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{422DD4B9-2DE0-4C4C-920A-527164C42DF4}|SistemaFarmacia.csproj|F:\\Gabriel Documentos\\ISUR\\2do Semestre\\EFSRT\\ProyectoFinal_Farmacia\\Farmacia\\SistemaFarmacia\\login.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{422DD4B9-2DE0-4C4C-920A-527164C42DF4}|SistemaFarmacia.csproj|solutionrelative:login.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{422DD4B9-2DE0-4C4C-920A-527164C42DF4}|SistemaFarmacia.csproj|F:\\Gabriel Documentos\\ISUR\\2do Semestre\\EFSRT\\ProyectoFinal_Farmacia\\Farmacia\\SistemaFarmacia\\login.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{422DD4B9-2DE0-4C4C-920A-527164C42DF4}|SistemaFarmacia.csproj|solutionrelative:login.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{422DD4B9-2DE0-4C4C-920A-527164C42DF4}|SistemaFarmacia.csproj|F:\\Gabriel Documentos\\ISUR\\2do Semestre\\EFSRT\\ProyectoFinal_Farmacia\\Farmacia\\SistemaFarmacia\\login.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
-      "RelativeMoniker": "D:0:0:{422DD4B9-2DE0-4C4C-920A-527164C42DF4}|SistemaFarmacia.csproj|solutionrelative:login.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+      "AbsoluteMoniker": "D:0:0:{422DD4B9-2DE0-4C4C-920A-527164C42DF4}|SistemaFarmacia.csproj|D:\\ISUR2\\EFSRT\\ProyectoFinal_Farmacia\\Farmacia\\SistemaFarmacia\\ventanaprincipal.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{422DD4B9-2DE0-4C4C-920A-527164C42DF4}|SistemaFarmacia.csproj|solutionrelative:ventanaprincipal.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -38,103 +26,60 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 5,
+          "SelectedChildIndex": 2,
           "Children": [
             {
               "$type": "Bookmark",
-              "Name": "ST:0:0:{34e76e81-ee4a-11d0-ae2e-00a0c90fffc3}"
-            },
-            {
-              "$type": "Bookmark",
-              "Name": "ST:0:0:{d78612c7-9962-4b83-95d9-268046dad23a}"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "Program.cs",
-              "DocumentMoniker": "F:\\Gabriel Documentos\\ISUR\\2do Semestre\\EFSRT\\ProyectoFinal_Farmacia\\Farmacia\\SistemaFarmacia\\Program.cs",
-              "RelativeDocumentMoniker": "Program.cs",
-              "ToolTip": "F:\\Gabriel Documentos\\ISUR\\2do Semestre\\EFSRT\\ProyectoFinal_Farmacia\\Farmacia\\SistemaFarmacia\\Program.cs",
-              "RelativeToolTip": "Program.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABIAAAABAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-12-09T17:47:41.855Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "Registro.cs [Dise\u00F1o]",
-              "DocumentMoniker": "F:\\Gabriel Documentos\\ISUR\\2do Semestre\\EFSRT\\ProyectoFinal_Farmacia\\Farmacia\\SistemaFarmacia\\Registro.cs",
-              "RelativeDocumentMoniker": "Registro.cs",
-              "ToolTip": "F:\\Gabriel Documentos\\ISUR\\2do Semestre\\EFSRT\\ProyectoFinal_Farmacia\\Farmacia\\SistemaFarmacia\\Registro.cs [Dise\u00F1o]",
-              "RelativeToolTip": "Registro.cs [Dise\u00F1o]",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-12-09T17:04:38.495Z",
-              "EditorCaption": " [Dise\u00F1o]"
+              "Name": "ST:0:0:{b1e99781-ab81-11d0-b683-00aa00a3ee26}"
             },
             {
               "$type": "Document",
               "DocumentIndex": 2,
-              "Title": "Registro.Designer.cs",
-              "DocumentMoniker": "F:\\Gabriel Documentos\\ISUR\\2do Semestre\\EFSRT\\ProyectoFinal_Farmacia\\Farmacia\\SistemaFarmacia\\Registro.Designer.cs",
-              "RelativeDocumentMoniker": "Registro.Designer.cs",
-              "ToolTip": "F:\\Gabriel Documentos\\ISUR\\2do Semestre\\EFSRT\\ProyectoFinal_Farmacia\\Farmacia\\SistemaFarmacia\\Registro.Designer.cs",
-              "RelativeToolTip": "Registro.Designer.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAAtAAAAAAAAAA==",
+              "Title": "Program.cs",
+              "DocumentMoniker": "D:\\ISUR2\\EFSRT\\ProyectoFinal_Farmacia\\Farmacia\\SistemaFarmacia\\Program.cs",
+              "RelativeDocumentMoniker": "Program.cs",
+              "ToolTip": "D:\\ISUR2\\EFSRT\\ProyectoFinal_Farmacia\\Farmacia\\SistemaFarmacia\\Program.cs",
+              "RelativeToolTip": "Program.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA8AAAAwAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-12-09T17:04:42.445Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-12-10T13:26:12.768Z"
             },
             {
               "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "Registro.cs",
-              "DocumentMoniker": "F:\\Gabriel Documentos\\ISUR\\2do Semestre\\EFSRT\\ProyectoFinal_Farmacia\\Farmacia\\SistemaFarmacia\\Registro.cs",
-              "RelativeDocumentMoniker": "Registro.cs",
-              "ToolTip": "F:\\Gabriel Documentos\\ISUR\\2do Semestre\\EFSRT\\ProyectoFinal_Farmacia\\Farmacia\\SistemaFarmacia\\Registro.cs",
-              "RelativeToolTip": "Registro.cs",
-              "ViewState": "AgIAAEAAAAAAAAAAAAAAwFIAAAAVAAAAAAAAAA==",
+              "Title": "VentanaPrincipal.cs [Dise\u00F1o]",
+              "DocumentMoniker": "D:\\ISUR2\\EFSRT\\ProyectoFinal_Farmacia\\Farmacia\\SistemaFarmacia\\VentanaPrincipal.cs",
+              "RelativeDocumentMoniker": "VentanaPrincipal.cs",
+              "ToolTip": "D:\\ISUR2\\EFSRT\\ProyectoFinal_Farmacia\\Farmacia\\SistemaFarmacia\\VentanaPrincipal.cs [Dise\u00F1o]",
+              "RelativeToolTip": "VentanaPrincipal.cs [Dise\u00F1o]",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-12-09T17:05:22.625Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 6,
-              "Title": "Login.cs [Dise\u00F1o]",
-              "DocumentMoniker": "F:\\Gabriel Documentos\\ISUR\\2do Semestre\\EFSRT\\ProyectoFinal_Farmacia\\Farmacia\\SistemaFarmacia\\Login.cs",
-              "RelativeDocumentMoniker": "Login.cs",
-              "ToolTip": "F:\\Gabriel Documentos\\ISUR\\2do Semestre\\EFSRT\\ProyectoFinal_Farmacia\\Farmacia\\SistemaFarmacia\\Login.cs [Dise\u00F1o]",
-              "RelativeToolTip": "Login.cs [Dise\u00F1o]",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-12-09T13:40:02.275Z",
+              "WhenOpened": "2025-12-10T12:17:56.096Z",
               "EditorCaption": " [Dise\u00F1o]"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
-              "Title": "Login.Designer.cs",
-              "DocumentMoniker": "F:\\Gabriel Documentos\\ISUR\\2do Semestre\\EFSRT\\ProyectoFinal_Farmacia\\Farmacia\\SistemaFarmacia\\Login.Designer.cs",
-              "RelativeDocumentMoniker": "Login.Designer.cs",
-              "ToolTip": "F:\\Gabriel Documentos\\ISUR\\2do Semestre\\EFSRT\\ProyectoFinal_Farmacia\\Farmacia\\SistemaFarmacia\\Login.Designer.cs",
-              "RelativeToolTip": "Login.Designer.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABQAAAAIAAAAAAAAAA==",
+              "DocumentIndex": 3,
+              "Title": "VentanaPrincipal.cs",
+              "DocumentMoniker": "D:\\ISUR2\\EFSRT\\ProyectoFinal_Farmacia\\Farmacia\\SistemaFarmacia\\VentanaPrincipal.cs",
+              "RelativeDocumentMoniker": "VentanaPrincipal.cs",
+              "ToolTip": "D:\\ISUR2\\EFSRT\\ProyectoFinal_Farmacia\\Farmacia\\SistemaFarmacia\\VentanaPrincipal.cs",
+              "RelativeToolTip": "VentanaPrincipal.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-12-09T14:16:54.087Z",
+              "WhenOpened": "2025-12-10T12:18:02.344Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "Login.cs",
-              "DocumentMoniker": "F:\\Gabriel Documentos\\ISUR\\2do Semestre\\EFSRT\\ProyectoFinal_Farmacia\\Farmacia\\SistemaFarmacia\\Login.cs",
-              "RelativeDocumentMoniker": "Login.cs",
-              "ToolTip": "F:\\Gabriel Documentos\\ISUR\\2do Semestre\\EFSRT\\ProyectoFinal_Farmacia\\Farmacia\\SistemaFarmacia\\Login.cs",
-              "RelativeToolTip": "Login.cs",
-              "ViewState": "AgIAACYAAAAAAAAAAAAwwBEAAAAyAAAAAAAAAA==",
+              "DocumentIndex": 1,
+              "Title": "VentanaPrincipal.Designer.cs",
+              "DocumentMoniker": "D:\\ISUR2\\EFSRT\\ProyectoFinal_Farmacia\\Farmacia\\SistemaFarmacia\\VentanaPrincipal.Designer.cs",
+              "RelativeDocumentMoniker": "VentanaPrincipal.Designer.cs",
+              "ToolTip": "D:\\ISUR2\\EFSRT\\ProyectoFinal_Farmacia\\Farmacia\\SistemaFarmacia\\VentanaPrincipal.Designer.cs",
+              "RelativeToolTip": "VentanaPrincipal.Designer.cs",
+              "ViewState": "AgIAAO0DAAAAAAAAAAAtwIcDAAAvAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-12-09T13:42:56.806Z",
+              "WhenOpened": "2025-12-10T12:18:04.443Z",
               "EditorCaption": ""
             }
           ]
