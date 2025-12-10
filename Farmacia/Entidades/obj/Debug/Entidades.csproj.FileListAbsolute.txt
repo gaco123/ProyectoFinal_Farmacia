@@ -4,3 +4,9 @@ F:\Gabriel Documentos\ISUR\2do Semestre\EFSRT\Farmacia\Entidades\obj\Debug\Entid
 F:\Gabriel Documentos\ISUR\2do Semestre\EFSRT\Farmacia\Entidades\obj\Debug\Entidades.csproj.CoreCompileInputs.cache
 F:\Gabriel Documentos\ISUR\2do Semestre\EFSRT\Farmacia\Entidades\obj\Debug\Entidades.dll
 F:\Gabriel Documentos\ISUR\2do Semestre\EFSRT\Farmacia\Entidades\obj\Debug\Entidades.pdb
+F:\Gabriel Documentos\ISUR\2do Semestre\EFSRT\ProyectoFinal_Farmacia\Farmacia\Entidades\bin\Debug\Entidades.dll
+F:\Gabriel Documentos\ISUR\2do Semestre\EFSRT\ProyectoFinal_Farmacia\Farmacia\Entidades\bin\Debug\Entidades.pdb
+F:\Gabriel Documentos\ISUR\2do Semestre\EFSRT\ProyectoFinal_Farmacia\Farmacia\Entidades\obj\Debug\Entidades.csproj.AssemblyReference.cache
+F:\Gabriel Documentos\ISUR\2do Semestre\EFSRT\ProyectoFinal_Farmacia\Farmacia\Entidades\obj\Debug\Entidades.csproj.CoreCompileInputs.cache
+F:\Gabriel Documentos\ISUR\2do Semestre\EFSRT\ProyectoFinal_Farmacia\Farmacia\Entidades\obj\Debug\Entidades.dll
+F:\Gabriel Documentos\ISUR\2do Semestre\EFSRT\ProyectoFinal_Farmacia\Farmacia\Entidades\obj\Debug\Entidades.pdb

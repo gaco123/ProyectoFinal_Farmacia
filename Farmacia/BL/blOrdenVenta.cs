@@ -24,5 +24,9 @@ namespace BL {
             dalOrdenVenta xdov = new dalOrdenVenta();
             xdov.eliminar_ordenventa(xodv);
         }
+        public int contar_ordenventa() {
+            dalOrdenVenta xdov = new dalOrdenVenta();
+            return xdov.contar_ordenventa();
+        }
     }
 }

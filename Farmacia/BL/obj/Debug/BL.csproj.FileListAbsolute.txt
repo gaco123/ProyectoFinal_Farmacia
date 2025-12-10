@@ -9,3 +9,14 @@ F:\Gabriel Documentos\ISUR\2do Semestre\EFSRT\Farmacia\BL\obj\Debug\BL.csproj.Co
 F:\Gabriel Documentos\ISUR\2do Semestre\EFSRT\Farmacia\BL\obj\Debug\BL.csproj.Up2Date
 F:\Gabriel Documentos\ISUR\2do Semestre\EFSRT\Farmacia\BL\obj\Debug\BL.dll
 F:\Gabriel Documentos\ISUR\2do Semestre\EFSRT\Farmacia\BL\obj\Debug\BL.pdb
+F:\Gabriel Documentos\ISUR\2do Semestre\EFSRT\ProyectoFinal_Farmacia\Farmacia\BL\bin\Debug\BL.dll
+F:\Gabriel Documentos\ISUR\2do Semestre\EFSRT\ProyectoFinal_Farmacia\Farmacia\BL\bin\Debug\BL.pdb
+F:\Gabriel Documentos\ISUR\2do Semestre\EFSRT\ProyectoFinal_Farmacia\Farmacia\BL\bin\Debug\DAL.dll
+F:\Gabriel Documentos\ISUR\2do Semestre\EFSRT\ProyectoFinal_Farmacia\Farmacia\BL\bin\Debug\Entidades.dll
+F:\Gabriel Documentos\ISUR\2do Semestre\EFSRT\ProyectoFinal_Farmacia\Farmacia\BL\bin\Debug\DAL.pdb
+F:\Gabriel Documentos\ISUR\2do Semestre\EFSRT\ProyectoFinal_Farmacia\Farmacia\BL\bin\Debug\Entidades.pdb
+F:\Gabriel Documentos\ISUR\2do Semestre\EFSRT\ProyectoFinal_Farmacia\Farmacia\BL\obj\Debug\BL.csproj.AssemblyReference.cache
+F:\Gabriel Documentos\ISUR\2do Semestre\EFSRT\ProyectoFinal_Farmacia\Farmacia\BL\obj\Debug\BL.csproj.CoreCompileInputs.cache
+F:\Gabriel Documentos\ISUR\2do Semestre\EFSRT\ProyectoFinal_Farmacia\Farmacia\BL\obj\Debug\BL.csproj.Up2Date
+F:\Gabriel Documentos\ISUR\2do Semestre\EFSRT\ProyectoFinal_Farmacia\Farmacia\BL\obj\Debug\BL.dll
+F:\Gabriel Documentos\ISUR\2do Semestre\EFSRT\ProyectoFinal_Farmacia\Farmacia\BL\obj\Debug\BL.pdb

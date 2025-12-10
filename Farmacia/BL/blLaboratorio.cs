@@ -24,5 +24,9 @@ namespace BL {
             dalLaboratorio xdl = new dalLaboratorio();
             xdl.eliminar_laboratorio(xlab);
         }
+        public int contar_laboratorio() {
+            dalLaboratorio xdl = new dalLaboratorio();
+            return xdl.contar_laboratorio();
+        }
     }
 }

@@ -24,5 +24,9 @@ namespace BL {
             dalUsuario xdur = new dalUsuario();
             xdur.eliminar_usuario(xusr);
         }
+        public int contar_usuario() {
+            dalUsuario xdur = new dalUsuario();
+            return xdur.contar_usuario();
+        }
     }
 }

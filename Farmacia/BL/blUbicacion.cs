@@ -24,5 +24,9 @@ namespace BL {
             dalUbicacion xdu = new dalUbicacion();
             xdu.eliminar_ubicacion(xubi);
         }
+        public int contar_ubicacion() {
+            dalUbicacion xdu = new dalUbicacion();
+            return xdu.contar_ubicacion();
+        }
     }
 }

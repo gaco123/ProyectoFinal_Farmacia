@@ -24,5 +24,9 @@ namespace BL {
             dalCliente xdc = new dalCliente();
             xdc.eliminar_cliente(xcl);
         }
+        public int contar_cliente() {
+            dalCliente xdc = new dalCliente();
+            return xdc.contar_cliente();
+        }
     }
 }

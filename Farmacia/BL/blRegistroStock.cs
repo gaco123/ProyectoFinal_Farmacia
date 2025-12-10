@@ -24,5 +24,9 @@ namespace BL {
             dalRegistroStock xdrs = new dalRegistroStock();
             xdrs.eliminar_registrostock(xrst);
         }
+        public int contar_registrostock() {
+            dalRegistroStock xdrs = new dalRegistroStock();
+            return xdrs.contar_registrostock();
+        }
     }
 }

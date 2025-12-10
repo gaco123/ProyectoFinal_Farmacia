@@ -62,6 +62,8 @@ namespace DAL {
             SQLCon xcon = new SQLCon();
             int numfilas = 0;
             xcon.con.Open();
+            xcon.cmd.CommandText = "bajaproducto_count";
+            xcon.cmd.CommandType = System.Data.CommandType.StoredProcedure;
             SqlDataReader reader = xcon.cmd.ExecuteReader();
             while (reader.Read()) {
                 numfilas = reader.GetInt32(0);

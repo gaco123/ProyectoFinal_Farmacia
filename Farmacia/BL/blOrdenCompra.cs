@@ -24,5 +24,9 @@ namespace BL {
             dalOrdenCompra xdoc = new dalOrdenCompra();
             xdoc.eliminar_ordencompra(xodc);
         }
+        public int contar_ordencompra() {
+            dalOrdenCompra xdoc = new dalOrdenCompra();
+            return xdoc.contar_ordencompra();
+        }
     }
 }

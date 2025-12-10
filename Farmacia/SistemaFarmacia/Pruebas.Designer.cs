@@ -1,5 +1,5 @@
 ﻿namespace SistemaFarmacia {
-    partial class Form1 {
+    partial class Pruebas {
         /// <summary>
         /// Variable del diseñador necesaria.
         /// </summary>
@@ -69,7 +69,6 @@
             this.Text = "Form1";
             this.ResumeLayout(false);
             this.PerformLayout();
-
         }
 
         #endregion

@@ -24,5 +24,9 @@ namespace BL {
             dalProveedor xdpv = new dalProveedor();
             xdpv.eliminar_proveedor(xpv);
         }
+        public int contar_proveedor() {
+            dalProveedor xdpv = new dalProveedor();
+            return xdpv.contar_proveedor();
+        }
     }
 }

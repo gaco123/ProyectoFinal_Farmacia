@@ -55,5 +55,18 @@ namespace DAL {
             xcon.exec_command();
             xcon.con.Close();
         }
+        public int contar_ordenventa() {
+            SQLCon xcon = new SQLCon();
+            int numfilas = 0;
+            xcon.con.Open();
+            xcon.cmd.CommandText = "ordenventa_count";
+            xcon.cmd.CommandType = System.Data.CommandType.StoredProcedure;
+            SqlDataReader reader = xcon.cmd.ExecuteReader();
+            while (reader.Read()) {
+                numfilas = reader.GetInt32(0);
+            }
+            xcon.con.Close();
+            return numfilas;
+        }
     }
 }

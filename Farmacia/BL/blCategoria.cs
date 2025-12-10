@@ -24,5 +24,9 @@ namespace BL {
             dalCategoria xdc = new dalCategoria();
             xdc.eliminar_categoria(xcat);
         }
+        public int contar_categoria() {
+            dalCategoria xdc = new dalCategoria();
+            return xdc.contar_categoria();
+        }
     }
 }

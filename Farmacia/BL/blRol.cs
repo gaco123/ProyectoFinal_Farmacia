@@ -24,5 +24,9 @@ namespace BL {
             dalRol xdr = new dalRol();
             xdr.eliminar_rol(xrl);
         }
+        public int contar_rol() {
+            dalRol xdr = new dalRol();
+            return xdr.contar_rol();
+        }
     }
 }
