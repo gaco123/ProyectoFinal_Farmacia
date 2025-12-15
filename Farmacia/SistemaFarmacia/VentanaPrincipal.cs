@@ -1,4 +1,5 @@
-﻿using Entidades;
+﻿using BL;
+using Entidades;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -28,7 +29,7 @@ namespace SistemaFarmacia {
             this.ven = ven;
         }
 
-        private void FormGestionProductos_Load(object sender, EventArgs e) {
+        private void VentanaPrincipal_Load(object sender, EventArgs e) {
             CargarDatosIniciales();
             ActualizarContadores();
         }
@@ -36,13 +37,25 @@ namespace SistemaFarmacia {
         private void ConfigurarDataGridViews() {
             // Configurar DataGridView de Productos
             dgvProductos.AutoGenerateColumns = false;
-            dgvProductos.Columns.Add("id", "ID");
-            dgvProductos.Columns.Add("nombre", "Nombre");
-            dgvProductos.Columns.Add("descripcion", "Descripción");
-            dgvProductos.Columns.Add("principio_activo", "Principio Activo");
-            dgvProductos.Columns.Add("stock_actual", "Stock Actual");
-            dgvProductos.Columns.Add("precio_unitario", "Precio Unitario");
-            dgvProductos.Columns.Add("estado", "Estado");
+            string[] columnas = {
+                "id", "nombre", "descripcion", "principio_activo", "laboratorio",
+                "categoria", "concentracion", "unidad_medida", "presentacion",
+                "stock_actual", "stock_minimo", "stock_maximo", "ubicacion",
+                "precio_unitario", "costo_unitario", "estado"
+            };
+
+            string[] encabezados = {
+                "ID", "Nombre", "Descripción", "Principio Activo", "Laboratorio",
+                "Categoría", "Concentración", "Unidad", "Presentación",
+                "Stock Actual", "Stock Min", "Stock Max", "Ubicación",
+                "Precio", "Costo", "Estado"
+            };
+
+            for (int i = 0; i < columnas.Length; i++) {
+                dgvProductos.Columns.Add(columnas[i], encabezados[i]);
+            }
+            dgvProductos.Columns["precio_unitario"].DefaultCellStyle.Format = "C2";
+            dgvProductos.Columns["costo_unitario"].DefaultCellStyle.Format = "C2";
 
             // Configurar DataGridView de Laboratorios
             dgvLaboratorios.AutoGenerateColumns = false;
@@ -59,39 +72,36 @@ namespace SistemaFarmacia {
         }
 
         private void CargarDatosIniciales() {
+            blProducto bpro = new blProducto();
             try {
                 lblEstado.Text = "Cargando datos...";
 
-                // Cargar productos (aquí iría la conexión a base de datos)
-                listaProductos = new List<clsProducto>
-                {
-                    new clsProducto(1, "Paracetamol", "Analgésico y antipirético",
-                        "Paracetamol", 1, 1, 500, "mg", "Tabletas", 100, 20, 200, 1, 2.50, 1.50, "Activo"),
-                    new clsProducto(2, "Ibuprofeno", "Antiinflamatorio no esteroideo",
-                        "Ibuprofeno", 1, 1, 400, "mg", "Cápsulas", 50, 10, 100, 1, 3.00, 2.00, "Activo")
-                };
+                // Cargar productos
+                for (int i = 1; i < bpro.contar_producto() + 1; i++) {
+                    listaProductos.Add(bpro.leer_producto(i));
+                }
 
                 // Cargar laboratorios
-                listaLaboratorios = new List<clsLaboratorio>
-                {
-                    new clsLaboratorio(1, "Pfizer", "Av. Principal 123", "555-1234"),
-                    new clsLaboratorio(2, "Bayer", "Calle Secundaria 456", "555-5678")
-                };
+                blLaboratorio blab = new blLaboratorio();
+                for (int i = 1; i < blab.contar_laboratorio() + 1; i++) {
+                    listaLaboratorios.Add(blab.leer_laboratorio(i));
+                }
 
                 // Cargar categorías
-                listaCategorias = new List<clsCategoria>
-                {
-                    new clsCategoria(1, "Analgésicos", "Medicamentos para el dolor"),
-                    new clsCategoria(2, "Antibióticos", "Medicamentos para infecciones")
-                };
+                blCategoria bcat = new blCategoria();
+                for (int i = 1; i < bcat.contar_categoria() + 1; i++) {
+                    listaCategorias.Add(bcat.leer_categoria(i));
+                }
 
                 ActualizarDataGridViews();
                 lblEstado.Text = "Datos cargados correctamente";
             }
             catch (Exception ex) {
-                MessageBox.Show($"Error al cargar datos: {ex.Message}", "Error",
-                    MessageBoxButtons.OK, MessageBoxIcon.Error);
-                lblEstado.Text = "Error al cargar datos";
+                MessageBox.Show($"Error, cargar datos: {ex.Message}"
+                    , "Error de Carga"
+                    , MessageBoxButtons.OK
+                    , MessageBoxIcon.Error);
+                lblEstado.Text = "Error, cargar datos";
             }
         }
 
@@ -104,19 +114,28 @@ namespace SistemaFarmacia {
                     producto.nombre,
                     producto.descripcion,
                     producto.principio_activo,
+                    producto.laboratorio, //falta jalar datos desde laboratorio
+                    producto.categoria, //falta jalar datos desde categoria
+                    producto.concentracion,
+                    producto.unidad_medida,
+                    producto.presentacion,
                     producto.stock_actual,
-                    $"${producto.precio_unitario:F2}",
+                    producto.stock_minimo,
+                    producto.stock_maximo,
+                    producto.ubicacion, //falta jalar datos desde ubicacion
+                    producto.precio_unitario,
+                    producto.costo_unitario,
                     producto.estado
                 );
             }
 
-            // Actualizar DataGridView de laboratorios
+            // Actualizar DataGridView de Laboratorios
             dgvLaboratorios.Rows.Clear();
             foreach (var lab in listaLaboratorios) {
                 dgvLaboratorios.Rows.Add(lab.id, lab.nombre, lab.direccion, lab.telefono);
             }
 
-            // Actualizar DataGridView de categorías
+            // Actualizar DataGridView de Categorías
             dgvCategorias.Rows.Clear();
             foreach (var cat in listaCategorias) {
                 dgvCategorias.Rows.Add(cat.id, cat.nombre, cat.descripcion);
@@ -132,7 +151,8 @@ namespace SistemaFarmacia {
         // ========== EVENTOS DE PRODUCTOS ==========
 
         private void btnNuevoProducto_Click(object sender, EventArgs e) {
-            //AbrirFormularioProducto(null);
+            FormularioAgregar ven2 = new FormularioAgregar();
+            ven2.Show();
         }
 
         private void btnEditarProducto_Click(object sender, EventArgs e) {
@@ -144,7 +164,7 @@ namespace SistemaFarmacia {
                     MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
         }
-
+        //--------------------------------------------------------
         private void btnEliminarProducto_Click(object sender, EventArgs e) {
             if (productoSeleccionado != null) {
                 DialogResult result = MessageBox.Show(

@@ -57,3 +57,6 @@ D:\ISUR2\EFSRT\ProyectoFinal_Farmacia\Farmacia\SistemaFarmacia\obj\Debug\Sistema
 D:\ISUR2\EFSRT\ProyectoFinal_Farmacia\Farmacia\SistemaFarmacia\obj\Debug\SistemaFarmacia.exe
 D:\ISUR2\EFSRT\ProyectoFinal_Farmacia\Farmacia\SistemaFarmacia\obj\Debug\SistemaFarmacia.pdb
 D:\ISUR2\EFSRT\ProyectoFinal_Farmacia\Farmacia\SistemaFarmacia\obj\Debug\SistemaFarmacia.VentanaPrincipal.resources
+F:\Gabriel Documentos\ISUR\2do Semestre\EFSRT\ProyectoFinal_Farmacia\Farmacia\SistemaFarmacia\obj\Debug\SistemaFarmacia.VentanaPrincipal.resources
+F:\Gabriel Documentos\ISUR\2do Semestre\EFSRT\ProyectoFinal_Farmacia\Farmacia\SistemaFarmacia\obj\Debug\SistemaFarmacia.FormularioAgregar.resources
+F:\Gabriel Documentos\ISUR\2do Semestre\EFSRT\ProyectoFinal_Farmacia\Farmacia\SistemaFarmacia\obj\Debug\SistemaFarmacia.FormularioEditar.resources

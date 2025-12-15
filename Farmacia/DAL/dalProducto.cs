@@ -51,8 +51,8 @@ namespace DAL {
                 xpro.stock_maximo = reader.GetInt32(10);
                 xpro.stock_minimo = reader.GetInt32(11);
                 xpro.ubicacion = reader.GetInt32(12);
-                xpro.precio_unitario = reader.GetDouble(13);
-                xpro.costo_unitario = reader.GetDouble(14);
+                xpro.precio_unitario = reader.GetDecimal(13);
+                xpro.costo_unitario = reader.GetDecimal(14);
                 xpro.estado = reader.GetString(15);
             }
             xcon.con.Close();

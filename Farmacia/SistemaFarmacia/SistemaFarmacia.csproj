@@ -46,6 +46,18 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="FormularioEditar.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormularioEditar.Designer.cs">
+      <DependentUpon>FormularioEditar.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormularioAgregar.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormularioAgregar.Designer.cs">
+      <DependentUpon>FormularioAgregar.cs</DependentUpon>
+    </Compile>
     <Compile Include="Login.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -72,6 +84,12 @@
     <Compile Include="VentanaPrincipal.Designer.cs">
       <DependentUpon>VentanaPrincipal.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="FormularioEditar.resx">
+      <DependentUpon>FormularioEditar.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormularioAgregar.resx">
+      <DependentUpon>FormularioAgregar.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Login.resx">
       <DependentUpon>Login.cs</DependentUpon>
     </EmbeddedResource>

@@ -23,6 +23,7 @@ namespace SistemaFarmacia {
         private void btnIngresar_Click(object sender, EventArgs e) {
             blUsuario blu = new blUsuario();
             int num = blu.contar_usuario();
+            bool comp = false;
             if (num > 0) {
                 for(int i = 1; i < num+1; i++) {
                     clsUsuario temp = blu.leer_usuario(i);
@@ -30,14 +31,16 @@ namespace SistemaFarmacia {
                         VentanaPrincipal ven = new VentanaPrincipal(this);
                         ven.Show();
                         this.Hide();
-                        return;
+                        comp = true;
                     }
                 }
             }
-            MessageBox.Show("Usuario o Contraseña Erroneos"
+            if(comp == false) {
+                MessageBox.Show("Usuario o Contraseña Erroneos"
                 , "Error de Login"
                 , MessageBoxButtons.OK
-                ,MessageBoxIcon.Error);
+                , MessageBoxIcon.Error);
+            }
         }
 
         private void txtUsuario_KeyPress(object sender, KeyPressEventArgs e) {

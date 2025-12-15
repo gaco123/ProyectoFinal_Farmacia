@@ -19,12 +19,12 @@ namespace Entidades {
         public int stock_minimo { get; set; }
         public int stock_maximo { get; set; }
         public int ubicacion { get; set; }
-        public double precio_unitario { get; set; }
-        public double costo_unitario { get; set; }
+        public decimal precio_unitario { get; set; }
+        public decimal costo_unitario { get; set; }
         public string estado { get; set; }
 
         public clsProducto() { }
-        public clsProducto(int id, string nombre, string descripcion, string principio_activo, int laboratorio, int categoria, int concentracion, string unidad_medida, string presentacion, int stock_actual, int stock_minimo, int stock_maximo, int ubicacion, double precio_unitario, double costo_unitario, string estado) {
+        public clsProducto(int id, string nombre, string descripcion, string principio_activo, int laboratorio, int categoria, int concentracion, string unidad_medida, string presentacion, int stock_actual, int stock_minimo, int stock_maximo, int ubicacion, decimal precio_unitario, decimal costo_unitario, string estado) {
             this.id = id;
             this.nombre = nombre;
             this.descripcion = descripcion;
