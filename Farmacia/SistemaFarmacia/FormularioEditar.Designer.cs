@@ -47,7 +47,6 @@
             this.lblStockMaximo = new System.Windows.Forms.Label();
             this.numStockMaximo = new System.Windows.Forms.NumericUpDown();
             this.lblUbicacion = new System.Windows.Forms.Label();
-            this.numUbicacion = new System.Windows.Forms.NumericUpDown();
             this.lblPrecioUnitario = new System.Windows.Forms.Label();
             this.numPrecioUnitario = new System.Windows.Forms.NumericUpDown();
             this.lblCostoUnitario = new System.Windows.Forms.Label();
@@ -57,10 +56,12 @@
             this.btnGuardar = new System.Windows.Forms.Button();
             this.btnCancelar = new System.Windows.Forms.Button();
             this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
+            this.cmbId = new System.Windows.Forms.ComboBox();
+            this.lblId = new System.Windows.Forms.Label();
+            this.cmbUbicacion = new System.Windows.Forms.ComboBox();
             ((System.ComponentModel.ISupportInitialize)(this.numStockActual)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numStockMinimo)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numStockMaximo)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numUbicacion)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numPrecioUnitario)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numCostoUnitario)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
@@ -70,7 +71,7 @@
             // 
             this.lblNombre.AutoSize = true;
             this.lblNombre.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblNombre.Location = new System.Drawing.Point(13, 20);
+            this.lblNombre.Location = new System.Drawing.Point(12, 64);
             this.lblNombre.Name = "lblNombre";
             this.lblNombre.Size = new System.Drawing.Size(52, 15);
             this.lblNombre.TabIndex = 1;
@@ -79,7 +80,7 @@
             // txtNombre
             // 
             this.txtNombre.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtNombre.Location = new System.Drawing.Point(13, 38);
+            this.txtNombre.Location = new System.Drawing.Point(12, 82);
             this.txtNombre.Name = "txtNombre";
             this.txtNombre.Size = new System.Drawing.Size(350, 21);
             this.txtNombre.TabIndex = 0;
@@ -88,7 +89,7 @@
             // 
             this.lblDescripcion.AutoSize = true;
             this.lblDescripcion.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblDescripcion.Location = new System.Drawing.Point(13, 70);
+            this.lblDescripcion.Location = new System.Drawing.Point(12, 114);
             this.lblDescripcion.Name = "lblDescripcion";
             this.lblDescripcion.Size = new System.Drawing.Size(72, 15);
             this.lblDescripcion.TabIndex = 3;
@@ -97,7 +98,7 @@
             // txtDescripcion
             // 
             this.txtDescripcion.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtDescripcion.Location = new System.Drawing.Point(13, 88);
+            this.txtDescripcion.Location = new System.Drawing.Point(12, 132);
             this.txtDescripcion.Multiline = true;
             this.txtDescripcion.Name = "txtDescripcion";
             this.txtDescripcion.Size = new System.Drawing.Size(350, 60);
@@ -107,7 +108,7 @@
             // 
             this.lblPrincipioActivo.AutoSize = true;
             this.lblPrincipioActivo.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblPrincipioActivo.Location = new System.Drawing.Point(13, 160);
+            this.lblPrincipioActivo.Location = new System.Drawing.Point(12, 204);
             this.lblPrincipioActivo.Name = "lblPrincipioActivo";
             this.lblPrincipioActivo.Size = new System.Drawing.Size(89, 15);
             this.lblPrincipioActivo.TabIndex = 5;
@@ -116,7 +117,7 @@
             // txtPrincipioActivo
             // 
             this.txtPrincipioActivo.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtPrincipioActivo.Location = new System.Drawing.Point(13, 178);
+            this.txtPrincipioActivo.Location = new System.Drawing.Point(12, 222);
             this.txtPrincipioActivo.Name = "txtPrincipioActivo";
             this.txtPrincipioActivo.Size = new System.Drawing.Size(350, 21);
             this.txtPrincipioActivo.TabIndex = 2;
@@ -125,7 +126,7 @@
             // 
             this.lblLaboratorio.AutoSize = true;
             this.lblLaboratorio.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblLaboratorio.Location = new System.Drawing.Point(13, 210);
+            this.lblLaboratorio.Location = new System.Drawing.Point(12, 254);
             this.lblLaboratorio.Name = "lblLaboratorio";
             this.lblLaboratorio.Size = new System.Drawing.Size(70, 15);
             this.lblLaboratorio.TabIndex = 7;
@@ -136,7 +137,7 @@
             this.cmbLaboratorio.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbLaboratorio.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cmbLaboratorio.FormattingEnabled = true;
-            this.cmbLaboratorio.Location = new System.Drawing.Point(13, 228);
+            this.cmbLaboratorio.Location = new System.Drawing.Point(12, 272);
             this.cmbLaboratorio.Name = "cmbLaboratorio";
             this.cmbLaboratorio.Size = new System.Drawing.Size(350, 23);
             this.cmbLaboratorio.TabIndex = 3;
@@ -145,7 +146,7 @@
             // 
             this.lblCategoria.AutoSize = true;
             this.lblCategoria.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblCategoria.Location = new System.Drawing.Point(383, 20);
+            this.lblCategoria.Location = new System.Drawing.Point(387, 15);
             this.lblCategoria.Name = "lblCategoria";
             this.lblCategoria.Size = new System.Drawing.Size(60, 15);
             this.lblCategoria.TabIndex = 9;
@@ -156,7 +157,7 @@
             this.cmbCategoria.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbCategoria.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cmbCategoria.FormattingEnabled = true;
-            this.cmbCategoria.Location = new System.Drawing.Point(383, 38);
+            this.cmbCategoria.Location = new System.Drawing.Point(387, 32);
             this.cmbCategoria.Name = "cmbCategoria";
             this.cmbCategoria.Size = new System.Drawing.Size(350, 23);
             this.cmbCategoria.TabIndex = 4;
@@ -165,7 +166,7 @@
             // 
             this.lblConcentracion.AutoSize = true;
             this.lblConcentracion.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblConcentracion.Location = new System.Drawing.Point(383, 70);
+            this.lblConcentracion.Location = new System.Drawing.Point(387, 64);
             this.lblConcentracion.Name = "lblConcentracion";
             this.lblConcentracion.Size = new System.Drawing.Size(86, 15);
             this.lblConcentracion.TabIndex = 11;
@@ -174,7 +175,7 @@
             // txtConcentracion
             // 
             this.txtConcentracion.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtConcentracion.Location = new System.Drawing.Point(383, 88);
+            this.txtConcentracion.Location = new System.Drawing.Point(387, 82);
             this.txtConcentracion.Name = "txtConcentracion";
             this.txtConcentracion.Size = new System.Drawing.Size(150, 21);
             this.txtConcentracion.TabIndex = 5;
@@ -183,7 +184,7 @@
             // 
             this.lblUnidadMedida.AutoSize = true;
             this.lblUnidadMedida.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblUnidadMedida.Location = new System.Drawing.Point(547, 70);
+            this.lblUnidadMedida.Location = new System.Drawing.Point(551, 64);
             this.lblUnidadMedida.Name = "lblUnidadMedida";
             this.lblUnidadMedida.Size = new System.Drawing.Size(92, 15);
             this.lblUnidadMedida.TabIndex = 13;
@@ -202,7 +203,7 @@
             "unidades",
             "%",
             "UI"});
-            this.cmbUnidadMedida.Location = new System.Drawing.Point(547, 88);
+            this.cmbUnidadMedida.Location = new System.Drawing.Point(551, 82);
             this.cmbUnidadMedida.Name = "cmbUnidadMedida";
             this.cmbUnidadMedida.Size = new System.Drawing.Size(186, 23);
             this.cmbUnidadMedida.TabIndex = 6;
@@ -211,7 +212,7 @@
             // 
             this.lblPresentacion.AutoSize = true;
             this.lblPresentacion.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblPresentacion.Location = new System.Drawing.Point(383, 120);
+            this.lblPresentacion.Location = new System.Drawing.Point(387, 114);
             this.lblPresentacion.Name = "lblPresentacion";
             this.lblPresentacion.Size = new System.Drawing.Size(79, 15);
             this.lblPresentacion.TabIndex = 15;
@@ -220,7 +221,7 @@
             // txtPresentacion
             // 
             this.txtPresentacion.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtPresentacion.Location = new System.Drawing.Point(383, 138);
+            this.txtPresentacion.Location = new System.Drawing.Point(387, 132);
             this.txtPresentacion.Name = "txtPresentacion";
             this.txtPresentacion.Size = new System.Drawing.Size(350, 21);
             this.txtPresentacion.TabIndex = 7;
@@ -229,7 +230,7 @@
             // 
             this.lblStockActual.AutoSize = true;
             this.lblStockActual.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblStockActual.Location = new System.Drawing.Point(383, 170);
+            this.lblStockActual.Location = new System.Drawing.Point(387, 164);
             this.lblStockActual.Name = "lblStockActual";
             this.lblStockActual.Size = new System.Drawing.Size(73, 15);
             this.lblStockActual.TabIndex = 17;
@@ -238,7 +239,7 @@
             // numStockActual
             // 
             this.numStockActual.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.numStockActual.Location = new System.Drawing.Point(383, 188);
+            this.numStockActual.Location = new System.Drawing.Point(387, 182);
             this.numStockActual.Maximum = new decimal(new int[] {
             10000,
             0,
@@ -254,7 +255,7 @@
             // 
             this.lblStockMinimo.AutoSize = true;
             this.lblStockMinimo.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblStockMinimo.Location = new System.Drawing.Point(503, 170);
+            this.lblStockMinimo.Location = new System.Drawing.Point(507, 164);
             this.lblStockMinimo.Name = "lblStockMinimo";
             this.lblStockMinimo.Size = new System.Drawing.Size(82, 15);
             this.lblStockMinimo.TabIndex = 19;
@@ -263,7 +264,7 @@
             // numStockMinimo
             // 
             this.numStockMinimo.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.numStockMinimo.Location = new System.Drawing.Point(503, 188);
+            this.numStockMinimo.Location = new System.Drawing.Point(507, 182);
             this.numStockMinimo.Maximum = new decimal(new int[] {
             10000,
             0,
@@ -279,7 +280,7 @@
             // 
             this.lblStockMaximo.AutoSize = true;
             this.lblStockMaximo.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblStockMaximo.Location = new System.Drawing.Point(623, 170);
+            this.lblStockMaximo.Location = new System.Drawing.Point(627, 164);
             this.lblStockMaximo.Name = "lblStockMaximo";
             this.lblStockMaximo.Size = new System.Drawing.Size(85, 15);
             this.lblStockMaximo.TabIndex = 21;
@@ -288,7 +289,7 @@
             // numStockMaximo
             // 
             this.numStockMaximo.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.numStockMaximo.Location = new System.Drawing.Point(623, 188);
+            this.numStockMaximo.Location = new System.Drawing.Point(627, 182);
             this.numStockMaximo.Maximum = new decimal(new int[] {
             10000,
             0,
@@ -304,31 +305,17 @@
             // 
             this.lblUbicacion.AutoSize = true;
             this.lblUbicacion.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblUbicacion.Location = new System.Drawing.Point(13, 260);
+            this.lblUbicacion.Location = new System.Drawing.Point(12, 304);
             this.lblUbicacion.Name = "lblUbicacion";
-            this.lblUbicacion.Size = new System.Drawing.Size(62, 15);
+            this.lblUbicacion.Size = new System.Drawing.Size(123, 15);
             this.lblUbicacion.TabIndex = 23;
-            this.lblUbicacion.Text = "Ubicación";
-            // 
-            // numUbicacion
-            // 
-            this.numUbicacion.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.numUbicacion.Location = new System.Drawing.Point(13, 278);
-            this.numUbicacion.Maximum = new decimal(new int[] {
-            1000,
-            0,
-            0,
-            0});
-            this.numUbicacion.Name = "numUbicacion";
-            this.numUbicacion.Size = new System.Drawing.Size(110, 21);
-            this.numUbicacion.TabIndex = 11;
-            this.numUbicacion.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.lblUbicacion.Text = "Zona - Estante - Nivel";
             // 
             // lblPrecioUnitario
             // 
             this.lblPrecioUnitario.AutoSize = true;
             this.lblPrecioUnitario.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblPrecioUnitario.Location = new System.Drawing.Point(383, 220);
+            this.lblPrecioUnitario.Location = new System.Drawing.Point(387, 214);
             this.lblPrecioUnitario.Name = "lblPrecioUnitario";
             this.lblPrecioUnitario.Size = new System.Drawing.Size(88, 15);
             this.lblPrecioUnitario.TabIndex = 25;
@@ -338,7 +325,7 @@
             // 
             this.numPrecioUnitario.DecimalPlaces = 4;
             this.numPrecioUnitario.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.numPrecioUnitario.Location = new System.Drawing.Point(383, 238);
+            this.numPrecioUnitario.Location = new System.Drawing.Point(387, 232);
             this.numPrecioUnitario.Maximum = new decimal(new int[] {
             99999,
             0,
@@ -354,7 +341,7 @@
             // 
             this.lblCostoUnitario.AutoSize = true;
             this.lblCostoUnitario.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblCostoUnitario.Location = new System.Drawing.Point(547, 220);
+            this.lblCostoUnitario.Location = new System.Drawing.Point(551, 214);
             this.lblCostoUnitario.Name = "lblCostoUnitario";
             this.lblCostoUnitario.Size = new System.Drawing.Size(84, 15);
             this.lblCostoUnitario.TabIndex = 27;
@@ -364,7 +351,7 @@
             // 
             this.numCostoUnitario.DecimalPlaces = 4;
             this.numCostoUnitario.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.numCostoUnitario.Location = new System.Drawing.Point(547, 238);
+            this.numCostoUnitario.Location = new System.Drawing.Point(551, 232);
             this.numCostoUnitario.Maximum = new decimal(new int[] {
             99999,
             0,
@@ -380,7 +367,7 @@
             // 
             this.lblEstado.AutoSize = true;
             this.lblEstado.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblEstado.Location = new System.Drawing.Point(143, 260);
+            this.lblEstado.Location = new System.Drawing.Point(171, 304);
             this.lblEstado.Name = "lblEstado";
             this.lblEstado.Size = new System.Drawing.Size(45, 15);
             this.lblEstado.TabIndex = 29;
@@ -393,11 +380,11 @@
             this.cmbEstado.FormattingEnabled = true;
             this.cmbEstado.Items.AddRange(new object[] {
             "A",
-            "I",
-            "D"});
-            this.cmbEstado.Location = new System.Drawing.Point(143, 277);
+            "B",
+            "C"});
+            this.cmbEstado.Location = new System.Drawing.Point(171, 321);
             this.cmbEstado.Name = "cmbEstado";
-            this.cmbEstado.Size = new System.Drawing.Size(220, 23);
+            this.cmbEstado.Size = new System.Drawing.Size(191, 23);
             this.cmbEstado.TabIndex = 14;
             // 
             // btnGuardar
@@ -408,7 +395,7 @@
             this.btnGuardar.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnGuardar.ForeColor = System.Drawing.Color.White;
             this.btnGuardar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnGuardar.Location = new System.Drawing.Point(447, 310);
+            this.btnGuardar.Location = new System.Drawing.Point(451, 358);
             this.btnGuardar.Name = "btnGuardar";
             this.btnGuardar.Size = new System.Drawing.Size(140, 40);
             this.btnGuardar.TabIndex = 15;
@@ -426,7 +413,7 @@
             this.btnCancelar.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnCancelar.ForeColor = System.Drawing.Color.White;
             this.btnCancelar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnCancelar.Location = new System.Drawing.Point(593, 310);
+            this.btnCancelar.Location = new System.Drawing.Point(597, 358);
             this.btnCancelar.Name = "btnCancelar";
             this.btnCancelar.Size = new System.Drawing.Size(140, 40);
             this.btnCancelar.TabIndex = 16;
@@ -440,12 +427,51 @@
             // 
             this.errorProvider1.ContainerControl = this;
             // 
-            // FormularioAgregar
+            // cmbId
+            // 
+            this.cmbId.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbId.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cmbId.FormattingEnabled = true;
+            this.cmbId.Items.AddRange(new object[] {
+            "A",
+            "I",
+            "D"});
+            this.cmbId.Location = new System.Drawing.Point(12, 32);
+            this.cmbId.Name = "cmbId";
+            this.cmbId.Size = new System.Drawing.Size(158, 23);
+            this.cmbId.TabIndex = 30;
+            this.cmbId.SelectedIndexChanged += new System.EventHandler(this.cmbId_SelectedIndexChanged);
+            // 
+            // lblId
+            // 
+            this.lblId.AutoSize = true;
+            this.lblId.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblId.Location = new System.Drawing.Point(12, 15);
+            this.lblId.Name = "lblId";
+            this.lblId.Size = new System.Drawing.Size(87, 15);
+            this.lblId.TabIndex = 31;
+            this.lblId.Tag = "";
+            this.lblId.Text = "Seleccionar ID";
+            // 
+            // cmbUbicacion
+            // 
+            this.cmbUbicacion.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbUbicacion.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cmbUbicacion.FormattingEnabled = true;
+            this.cmbUbicacion.Location = new System.Drawing.Point(12, 322);
+            this.cmbUbicacion.Name = "cmbUbicacion";
+            this.cmbUbicacion.Size = new System.Drawing.Size(140, 23);
+            this.cmbUbicacion.TabIndex = 32;
+            // 
+            // FormularioEditar
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(754, 373);
+            this.ClientSize = new System.Drawing.Size(760, 418);
+            this.Controls.Add(this.cmbUbicacion);
+            this.Controls.Add(this.cmbId);
+            this.Controls.Add(this.lblId);
             this.Controls.Add(this.btnCancelar);
             this.Controls.Add(this.btnGuardar);
             this.Controls.Add(this.cmbEstado);
@@ -454,7 +480,6 @@
             this.Controls.Add(this.lblCostoUnitario);
             this.Controls.Add(this.numPrecioUnitario);
             this.Controls.Add(this.lblPrecioUnitario);
-            this.Controls.Add(this.numUbicacion);
             this.Controls.Add(this.lblUbicacion);
             this.Controls.Add(this.numStockMaximo);
             this.Controls.Add(this.lblStockMaximo);
@@ -488,7 +513,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.numStockActual)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numStockMinimo)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numStockMaximo)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numUbicacion)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numPrecioUnitario)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numCostoUnitario)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();
@@ -521,7 +545,6 @@
         private System.Windows.Forms.Label lblStockMaximo;
         private System.Windows.Forms.NumericUpDown numStockMaximo;
         private System.Windows.Forms.Label lblUbicacion;
-        private System.Windows.Forms.NumericUpDown numUbicacion;
         private System.Windows.Forms.Label lblPrecioUnitario;
         private System.Windows.Forms.NumericUpDown numPrecioUnitario;
         private System.Windows.Forms.Label lblCostoUnitario;
@@ -531,5 +554,8 @@
         private System.Windows.Forms.Button btnGuardar;
         private System.Windows.Forms.Button btnCancelar;
         private System.Windows.Forms.ErrorProvider errorProvider1;
+        private System.Windows.Forms.ComboBox cmbId;
+        private System.Windows.Forms.Label lblId;
+        private System.Windows.Forms.ComboBox cmbUbicacion;
     }
 }

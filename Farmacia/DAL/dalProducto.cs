@@ -26,6 +26,7 @@ namespace DAL {
             xcon.cmd.Parameters.AddWithValue("@ubicacion", xpro.ubicacion);
             xcon.cmd.Parameters.AddWithValue("@precio_unitario", xpro.precio_unitario);
             xcon.cmd.Parameters.AddWithValue("@costo_unitario", xpro.costo_unitario);
+            xcon.cmd.Parameters.AddWithValue("@estado", xpro.estado);
             xcon.exec_command();
             xcon.con.Close();
         }
@@ -77,6 +78,7 @@ namespace DAL {
             xcon.cmd.Parameters.AddWithValue("@ubicacion", xpro.ubicacion);
             xcon.cmd.Parameters.AddWithValue("@precio_unitario", xpro.precio_unitario);
             xcon.cmd.Parameters.AddWithValue("@costo_unitario", xpro.costo_unitario);
+            xcon.cmd.Parameters.AddWithValue("@estado", xpro.estado);
             xcon.exec_command();
             xcon.con.Close();
         }

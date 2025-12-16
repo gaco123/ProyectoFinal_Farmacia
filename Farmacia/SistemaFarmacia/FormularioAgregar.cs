@@ -15,6 +15,7 @@ namespace SistemaFarmacia {
         private blProducto blProducto = new blProducto();
         private List<clsLaboratorio> laboratorios = new List<clsLaboratorio>();
         private List<clsCategoria> categorias = new List<clsCategoria>();
+        private List<clsUbicacion> ubicaciones = new List<clsUbicacion>();
 
         // Propiedad para obtener el producto creado
         public clsProducto Producto { get; private set; }
@@ -40,6 +41,11 @@ namespace SistemaFarmacia {
             for (int i = 1; i < bcat.contar_categoria() + 1; i++) {
                 categorias.Add(bcat.leer_categoria(i));
             }
+
+            blUbicacion bubi = new blUbicacion();
+            for (int i = 1; i < bubi.contar_ubicacion() + 1; i++) {
+                ubicaciones.Add(bubi.leer_ubicacion(i));
+            }
         }
 
         private void ConfigurarControles() {
@@ -59,6 +65,15 @@ namespace SistemaFarmacia {
             if (cmbCategoria.Items.Count > 0)
                 cmbCategoria.SelectedIndex = 0;
 
+            // Cargar ubicaciones
+            foreach (var ubi in ubicaciones) {
+                cmbUbicacion.Items.Add(new ComboItem($"{ubi.zona} - {ubi.estante} - {ubi.nivel}", ubi.id));
+            }
+            if (cmbUbicacion.Items.Count > 0)
+                cmbUbicacion.SelectedIndex = 0;
+
+            CargarDatosIniciales();
+
             // Configurar unidad de medida
             if (cmbUnidadMedida.Items.Count > 0)
                 cmbUnidadMedida.SelectedIndex = 0;
@@ -71,7 +86,6 @@ namespace SistemaFarmacia {
             numStockActual.Value = 0;
             numStockMinimo.Value = 10;
             numStockMaximo.Value = 100;
-            numUbicacion.Value = 1;
             numPrecioUnitario.Value = 0.0000m;
             numCostoUnitario.Value = 0.0000m;
         }
@@ -84,14 +98,14 @@ namespace SistemaFarmacia {
             txtPresentacion.Clear();
 
             if (cmbLaboratorio.Items.Count > 0) cmbLaboratorio.SelectedIndex = 0;
-            if (cmbCategoria.Items.Count > 0)
-                if (cmbUnidadMedida.Items.Count > 0) cmbUnidadMedida.SelectedIndex = 0;
+            if (cmbCategoria.Items.Count > 0) cmbCategoria.SelectedIndex = 0;
+            if (cmbUbicacion.Items.Count > 0) cmbUbicacion.SelectedIndex = 0;
+            if (cmbUnidadMedida.Items.Count > 0) cmbUnidadMedida.SelectedIndex = 0;
             if (cmbEstado.Items.Count > 0) cmbEstado.SelectedIndex = 0;
 
             numStockActual.Value = 0;
             numStockMinimo.Value = 10;
             numStockMaximo.Value = 100;
-            numUbicacion.Value = 1;
             numPrecioUnitario.Value = 0.0000m;
             numCostoUnitario.Value = 0.0000m;
 
@@ -176,6 +190,12 @@ namespace SistemaFarmacia {
                 valido = false;
             }
 
+            // Validar Ubicacion
+            if (cmbUbicacion.SelectedItem == null) {
+                errorProvider1.SetError(cmbLaboratorio, "Seleccione una ubicación");
+                valido = false;
+            }
+
             // Validar Unidad de Medida
             if (cmbUnidadMedida.SelectedItem == null) {
                 errorProvider1.SetError(cmbUnidadMedida, "Seleccione una unidad de medida");
@@ -213,12 +233,6 @@ namespace SistemaFarmacia {
                 valido = false;
             }
 
-            // Validar Ubicación
-            if (numUbicacion.Value <= 0) {
-                errorProvider1.SetError(numUbicacion, "Debe ser mayor a 0");
-                valido = false;
-            }
-
             return valido;
         }
 
@@ -233,15 +247,15 @@ namespace SistemaFarmacia {
                     laboratorio = ((ComboItem)cmbLaboratorio.SelectedItem).Valor,
                     categoria = ((ComboItem)cmbCategoria.SelectedItem).Valor,
                     concentracion = int.Parse(txtConcentracion.Text),
-                    unidad_medida = cmbUnidadMedida.SelectedItem.ToString(),
+                    unidad_medida = cmbUnidadMedida.Text,
                     presentacion = txtPresentacion.Text.Trim(),
                     stock_actual = (int)numStockActual.Value,
                     stock_minimo = (int)numStockMinimo.Value,
                     stock_maximo = (int)numStockMaximo.Value,
-                    ubicacion = (int)numUbicacion.Value,
+                    ubicacion = ((ComboItem)cmbUbicacion.SelectedItem).Valor,
                     precio_unitario = numPrecioUnitario.Value,
                     costo_unitario = numCostoUnitario.Value,
-                    estado = cmbEstado.SelectedItem.ToString()
+                    estado = cmbEstado.Text
                 };
 
                 // Guardar usando BL

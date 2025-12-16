@@ -47,7 +47,6 @@
             this.lblStockMaximo = new System.Windows.Forms.Label();
             this.numStockMaximo = new System.Windows.Forms.NumericUpDown();
             this.lblUbicacion = new System.Windows.Forms.Label();
-            this.numUbicacion = new System.Windows.Forms.NumericUpDown();
             this.lblPrecioUnitario = new System.Windows.Forms.Label();
             this.numPrecioUnitario = new System.Windows.Forms.NumericUpDown();
             this.lblCostoUnitario = new System.Windows.Forms.Label();
@@ -57,10 +56,10 @@
             this.btnGuardar = new System.Windows.Forms.Button();
             this.btnCancelar = new System.Windows.Forms.Button();
             this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
+            this.cmbUbicacion = new System.Windows.Forms.ComboBox();
             ((System.ComponentModel.ISupportInitialize)(this.numStockActual)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numStockMinimo)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numStockMaximo)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numUbicacion)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numPrecioUnitario)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numCostoUnitario)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
@@ -306,23 +305,9 @@
             this.lblUbicacion.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblUbicacion.Location = new System.Drawing.Point(13, 260);
             this.lblUbicacion.Name = "lblUbicacion";
-            this.lblUbicacion.Size = new System.Drawing.Size(62, 15);
+            this.lblUbicacion.Size = new System.Drawing.Size(123, 15);
             this.lblUbicacion.TabIndex = 23;
-            this.lblUbicacion.Text = "Ubicación";
-            // 
-            // numUbicacion
-            // 
-            this.numUbicacion.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.numUbicacion.Location = new System.Drawing.Point(13, 278);
-            this.numUbicacion.Maximum = new decimal(new int[] {
-            1000,
-            0,
-            0,
-            0});
-            this.numUbicacion.Name = "numUbicacion";
-            this.numUbicacion.Size = new System.Drawing.Size(110, 21);
-            this.numUbicacion.TabIndex = 11;
-            this.numUbicacion.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.lblUbicacion.Text = "Zona - Estante - Nivel";
             // 
             // lblPrecioUnitario
             // 
@@ -380,7 +365,7 @@
             // 
             this.lblEstado.AutoSize = true;
             this.lblEstado.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblEstado.Location = new System.Drawing.Point(143, 260);
+            this.lblEstado.Location = new System.Drawing.Point(171, 260);
             this.lblEstado.Name = "lblEstado";
             this.lblEstado.Size = new System.Drawing.Size(45, 15);
             this.lblEstado.TabIndex = 29;
@@ -393,11 +378,11 @@
             this.cmbEstado.FormattingEnabled = true;
             this.cmbEstado.Items.AddRange(new object[] {
             "A",
-            "I",
-            "D"});
-            this.cmbEstado.Location = new System.Drawing.Point(143, 277);
+            "B",
+            "C"});
+            this.cmbEstado.Location = new System.Drawing.Point(171, 277);
             this.cmbEstado.Name = "cmbEstado";
-            this.cmbEstado.Size = new System.Drawing.Size(220, 23);
+            this.cmbEstado.Size = new System.Drawing.Size(192, 23);
             this.cmbEstado.TabIndex = 14;
             // 
             // btnGuardar
@@ -440,12 +425,23 @@
             // 
             this.errorProvider1.ContainerControl = this;
             // 
+            // cmbUbicacion
+            // 
+            this.cmbUbicacion.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbUbicacion.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cmbUbicacion.FormattingEnabled = true;
+            this.cmbUbicacion.Location = new System.Drawing.Point(13, 278);
+            this.cmbUbicacion.Name = "cmbUbicacion";
+            this.cmbUbicacion.Size = new System.Drawing.Size(140, 23);
+            this.cmbUbicacion.TabIndex = 30;
+            // 
             // FormularioAgregar
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(754, 373);
+            this.ClientSize = new System.Drawing.Size(754, 368);
+            this.Controls.Add(this.cmbUbicacion);
             this.Controls.Add(this.btnCancelar);
             this.Controls.Add(this.btnGuardar);
             this.Controls.Add(this.cmbEstado);
@@ -454,7 +450,6 @@
             this.Controls.Add(this.lblCostoUnitario);
             this.Controls.Add(this.numPrecioUnitario);
             this.Controls.Add(this.lblPrecioUnitario);
-            this.Controls.Add(this.numUbicacion);
             this.Controls.Add(this.lblUbicacion);
             this.Controls.Add(this.numStockMaximo);
             this.Controls.Add(this.lblStockMaximo);
@@ -488,7 +483,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.numStockActual)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numStockMinimo)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numStockMaximo)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numUbicacion)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numPrecioUnitario)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numCostoUnitario)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();
@@ -521,7 +515,6 @@
         private System.Windows.Forms.Label lblStockMaximo;
         private System.Windows.Forms.NumericUpDown numStockMaximo;
         private System.Windows.Forms.Label lblUbicacion;
-        private System.Windows.Forms.NumericUpDown numUbicacion;
         private System.Windows.Forms.Label lblPrecioUnitario;
         private System.Windows.Forms.NumericUpDown numPrecioUnitario;
         private System.Windows.Forms.Label lblCostoUnitario;
@@ -531,5 +524,6 @@
         private System.Windows.Forms.Button btnGuardar;
         private System.Windows.Forms.Button btnCancelar;
         private System.Windows.Forms.ErrorProvider errorProvider1;
+        private System.Windows.Forms.ComboBox cmbUbicacion;
     }
 }

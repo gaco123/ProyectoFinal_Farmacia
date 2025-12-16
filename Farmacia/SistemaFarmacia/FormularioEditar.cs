@@ -13,8 +13,10 @@ using System.Windows.Forms;
 namespace SistemaFarmacia {
     public partial class FormularioEditar : Form {
         private blProducto blProducto = new blProducto();
+        private List<clsProducto> productos = new List<clsProducto>();
         private List<clsLaboratorio> laboratorios = new List<clsLaboratorio>();
         private List<clsCategoria> categorias = new List<clsCategoria>();
+        private List<clsUbicacion> ubicaciones = new List<clsUbicacion>();
 
         // Propiedad para obtener el producto creado
         public clsProducto Producto { get; private set; }
@@ -29,8 +31,10 @@ namespace SistemaFarmacia {
         }
 
         private void CargarDatosIniciales() {
-            // Aquí cargarías laboratorios y categorías de la base de datos
-            // Por ahora datos de ejemplo
+            for (int i = 1; i < blProducto.contar_producto() + 1; i++) {
+                productos.Add(blProducto.leer_producto(i));
+            }
+
             blLaboratorio blab = new blLaboratorio();
             for (int i = 1; i < blab.contar_laboratorio() + 1; i++) {
                 laboratorios.Add(blab.leer_laboratorio(i));
@@ -40,9 +44,20 @@ namespace SistemaFarmacia {
             for (int i = 1; i < bcat.contar_categoria() + 1; i++) {
                 categorias.Add(bcat.leer_categoria(i));
             }
+
+            blUbicacion bubi = new blUbicacion();
+            for (int i = 1; i < bubi.contar_ubicacion() + 1; i++) {
+                ubicaciones.Add(bubi.leer_ubicacion(i));
+            }
         }
 
         private void ConfigurarControles() {
+            //Cargar ids productos
+            cmbId.Items.Clear();
+            foreach (var pro in productos) {
+                cmbId.Items.Add(new ComboItem(pro.nombre, pro.id));
+            }
+
             // Cargar laboratorios
             cmbLaboratorio.Items.Clear();
             foreach (var lab in laboratorios) {
@@ -59,6 +74,13 @@ namespace SistemaFarmacia {
             if (cmbCategoria.Items.Count > 0)
                 cmbCategoria.SelectedIndex = 0;
 
+            // Cargar ubicaciones
+            foreach (var ubi in ubicaciones) {
+                cmbUbicacion.Items.Add(new ComboItem($"{ubi.zona} - {ubi.estante} - {ubi.nivel}", ubi.id));
+            }
+            if (cmbUbicacion.Items.Count > 0)
+                cmbUbicacion.SelectedIndex = 0;
+
             // Configurar unidad de medida
             if (cmbUnidadMedida.Items.Count > 0)
                 cmbUnidadMedida.SelectedIndex = 0;
@@ -71,7 +93,6 @@ namespace SistemaFarmacia {
             numStockActual.Value = 0;
             numStockMinimo.Value = 10;
             numStockMaximo.Value = 100;
-            numUbicacion.Value = 1;
             numPrecioUnitario.Value = 0.0000m;
             numCostoUnitario.Value = 0.0000m;
         }
@@ -84,14 +105,14 @@ namespace SistemaFarmacia {
             txtPresentacion.Clear();
 
             if (cmbLaboratorio.Items.Count > 0) cmbLaboratorio.SelectedIndex = 0;
-            if (cmbCategoria.Items.Count > 0)
-                if (cmbUnidadMedida.Items.Count > 0) cmbUnidadMedida.SelectedIndex = 0;
+            if (cmbCategoria.Items.Count > 0) cmbCategoria.SelectedIndex = 0;
+            if (cmbUbicacion.Items.Count > 0) cmbUbicacion.SelectedIndex = 0;
+            if (cmbUnidadMedida.Items.Count > 0) cmbUnidadMedida.SelectedIndex = 0;
             if (cmbEstado.Items.Count > 0) cmbEstado.SelectedIndex = 0;
 
             numStockActual.Value = 0;
             numStockMinimo.Value = 10;
             numStockMaximo.Value = 100;
-            numUbicacion.Value = 1;
             numPrecioUnitario.Value = 0.0000m;
             numCostoUnitario.Value = 0.0000m;
 
@@ -176,6 +197,12 @@ namespace SistemaFarmacia {
                 valido = false;
             }
 
+            // Validar Ubicacion
+            if (cmbUbicacion.SelectedItem == null) {
+                errorProvider1.SetError(cmbLaboratorio, "Seleccione una ubicación");
+                valido = false;
+            }
+
             // Validar Unidad de Medida
             if (cmbUnidadMedida.SelectedItem == null) {
                 errorProvider1.SetError(cmbUnidadMedida, "Seleccione una unidad de medida");
@@ -213,41 +240,35 @@ namespace SistemaFarmacia {
                 valido = false;
             }
 
-            // Validar Ubicación
-            if (numUbicacion.Value <= 0) {
-                errorProvider1.SetError(numUbicacion, "Debe ser mayor a 0");
-                valido = false;
-            }
-
             return valido;
         }
 
         private void GuardarProducto() {
             try {
-                // Crear nuevo producto
+                // Actualizar producto
                 Producto = new clsProducto {
-                    // El ID se generará automáticamente en la base de datos
+                    id = ((ComboItem)cmbId.SelectedItem).Valor,
                     nombre = txtNombre.Text.Trim(),
                     descripcion = txtDescripcion.Text.Trim(),
                     principio_activo = txtPrincipioActivo.Text.Trim(),
                     laboratorio = ((ComboItem)cmbLaboratorio.SelectedItem).Valor,
                     categoria = ((ComboItem)cmbCategoria.SelectedItem).Valor,
                     concentracion = int.Parse(txtConcentracion.Text),
-                    unidad_medida = cmbUnidadMedida.SelectedItem.ToString(),
+                    unidad_medida = cmbUnidadMedida.Text,
                     presentacion = txtPresentacion.Text.Trim(),
                     stock_actual = (int)numStockActual.Value,
                     stock_minimo = (int)numStockMinimo.Value,
                     stock_maximo = (int)numStockMaximo.Value,
-                    ubicacion = (int)numUbicacion.Value,
+                    ubicacion = ((ComboItem)cmbUbicacion.SelectedItem).Valor,
                     precio_unitario = numPrecioUnitario.Value,
                     costo_unitario = numCostoUnitario.Value,
-                    estado = cmbEstado.SelectedItem.ToString()
+                    estado = cmbEstado.Text
                 };
 
                 // Guardar usando BL
-                blProducto.agregar_producto(Producto);
+                blProducto.actualizar_producto(Producto);
 
-                MessageBox.Show("Producto agregado exitosamente"
+                MessageBox.Show("Producto actualizado exitosamente"
                     , "Éxito"
                     , MessageBoxButtons.OK
                     , MessageBoxIcon.Information);
@@ -256,7 +277,7 @@ namespace SistemaFarmacia {
                 this.Close();
             }
             catch (Exception ex) {
-                MessageBox.Show($"Error al guardar el producto: {ex.Message}"
+                MessageBox.Show($"Error al actualizar el producto: {ex.Message}"
                     , "Error"
                     , MessageBoxButtons.OK
                     , MessageBoxIcon.Error);
@@ -351,6 +372,31 @@ namespace SistemaFarmacia {
                 errorProvider1.SetError(txtConcentracion, "Debe ser un número entero");
                 e.Cancel = true;
             }
+        }
+
+        private void CargarDatos(int i) {
+            clsProducto a = blProducto.leer_producto(i);
+            
+            // Configurar valores por defecto
+            txtNombre.Text = a.nombre;
+            txtDescripcion.Text = a.descripcion;
+            txtPrincipioActivo.Text = a.principio_activo;
+            cmbLaboratorio.SelectedIndex = a.laboratorio-1;
+            cmbCategoria.SelectedIndex = a.categoria - 1;
+            txtConcentracion.Text = a.concentracion.ToString();
+            cmbUnidadMedida.Text = a.unidad_medida;
+            txtPresentacion.Text = a.presentacion;
+            numStockActual.Value = a.stock_actual;
+            numStockMinimo.Value = a.stock_minimo;
+            numStockMaximo.Value = a.stock_maximo;
+            cmbUbicacion.SelectedIndex = a.ubicacion-1;
+            numPrecioUnitario.Value = a.precio_unitario;
+            numCostoUnitario.Value = a.costo_unitario;
+            cmbEstado.Text = a.estado;
+        }
+
+        private void cmbId_SelectedIndexChanged(object sender, EventArgs e) {
+            CargarDatos(((ComboItem)cmbId.SelectedItem).Valor);
         }
     }
 }

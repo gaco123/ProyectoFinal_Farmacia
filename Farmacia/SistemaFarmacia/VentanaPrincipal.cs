@@ -15,6 +15,7 @@ namespace SistemaFarmacia {
         private List<clsProducto> listaProductos = new List<clsProducto>();
         private List<clsLaboratorio> listaLaboratorios = new List<clsLaboratorio>();
         private List<clsCategoria> listaCategorias = new List<clsCategoria>();
+        private List<clsUbicacion> listaUbicaciones = new List<clsUbicacion>();
 
         // Variables para selección actual
         private clsProducto productoSeleccionado = null;
@@ -72,6 +73,11 @@ namespace SistemaFarmacia {
         }
 
         private void CargarDatosIniciales() {
+            listaProductos.Clear();
+            listaLaboratorios.Clear();
+            listaCategorias.Clear();
+            listaUbicaciones.Clear();
+
             blProducto bpro = new blProducto();
             try {
                 lblEstado.Text = "Cargando datos...";
@@ -93,6 +99,12 @@ namespace SistemaFarmacia {
                     listaCategorias.Add(bcat.leer_categoria(i));
                 }
 
+                // Cargar ubicaciones
+                blUbicacion bubi = new blUbicacion();
+                for (int i = 1; i < bubi.contar_ubicacion() + 1; i++) {
+                    listaUbicaciones.Add(bubi.leer_ubicacion(i));
+                }
+
                 ActualizarDataGridViews();
                 lblEstado.Text = "Datos cargados correctamente";
             }
@@ -104,7 +116,30 @@ namespace SistemaFarmacia {
                 lblEstado.Text = "Error, cargar datos";
             }
         }
-
+        private string BuscarNombre(List<clsLaboratorio> a, int b) {
+            for(int i = 0; i < a.Count; i++) {
+                if (a[i].id == b) {
+                    return a[i].nombre;
+                }
+            }
+            return "error";
+        }
+        private string BuscarNombre(List<clsCategoria> a, int b) {
+            for (int i = 0; i < a.Count; i++) {
+                if (a[i].id == b) {
+                    return a[i].nombre;
+                }
+            }
+            return "error";
+        }
+        private string BuscarNombre(List<clsUbicacion> a, int b) {
+            for (int i = 0; i < a.Count; i++) {
+                if (a[i].id == b) {
+                    return $"{a[i].zona} - {a[i].estante} - {a[i].nivel}";
+                }
+            }
+            return "error";
+        }
         private void ActualizarDataGridViews() {
             // Actualizar DataGridView de productos
             dgvProductos.Rows.Clear();
@@ -114,15 +149,15 @@ namespace SistemaFarmacia {
                     producto.nombre,
                     producto.descripcion,
                     producto.principio_activo,
-                    producto.laboratorio, //falta jalar datos desde laboratorio
-                    producto.categoria, //falta jalar datos desde categoria
+                    BuscarNombre(listaLaboratorios, producto.laboratorio), //falta jalar datos desde laboratorio
+                    BuscarNombre(listaCategorias, producto.categoria), //falta jalar datos desde categoria
                     producto.concentracion,
                     producto.unidad_medida,
                     producto.presentacion,
                     producto.stock_actual,
                     producto.stock_minimo,
                     producto.stock_maximo,
-                    producto.ubicacion, //falta jalar datos desde ubicacion
+                    BuscarNombre(listaUbicaciones, producto.ubicacion), //falta jalar datos desde ubicacion
                     producto.precio_unitario,
                     producto.costo_unitario,
                     producto.estado
@@ -145,24 +180,24 @@ namespace SistemaFarmacia {
         }
 
         private void ActualizarContadores() {
-            lblTotalProductos.Text = $"Total: {listaProductos.Count} productos";
+            lblTotal.Text = $"Total: {listaProductos.Count} productos";
         }
-
-        // ========== EVENTOS DE PRODUCTOS ==========
-
         private void btnNuevoProducto_Click(object sender, EventArgs e) {
             FormularioAgregar ven2 = new FormularioAgregar();
+            ven2.FormClosed += (s, args) => {
+                CargarDatosIniciales();
+                lblEstado.Text = "Producto Añadido Correctamente";
+            };
             ven2.Show();
         }
 
         private void btnEditarProducto_Click(object sender, EventArgs e) {
-            if (productoSeleccionado != null) {
-                //AbrirFormularioProducto(productoSeleccionado);
-            }
-            else {
-                MessageBox.Show("Seleccione un producto para editar", "Advertencia",
-                    MessageBoxButtons.OK, MessageBoxIcon.Warning);
-            }
+            FormularioEditar ven3 = new FormularioEditar();
+            ven3.FormClosed += (s, args) => {
+                CargarDatosIniciales();
+                lblEstado.Text = "Producto Editado Correctamente";
+            };
+            ven3.Show();
         }
         //--------------------------------------------------------
         private void btnEliminarProducto_Click(object sender, EventArgs e) {
@@ -192,19 +227,6 @@ namespace SistemaFarmacia {
             lblEstado.Text = "Datos actualizados";
         }
 
-        private void dgvProductos_SelectionChanged(object sender, EventArgs e) {
-            if (dgvProductos.SelectedRows.Count > 0) {
-                int id = Convert.ToInt32(dgvProductos.SelectedRows[0].Cells["id"].Value);
-                productoSeleccionado = listaProductos.FirstOrDefault(p => p.id == id);
-            }
-        }
-
-        private void dgvProductos_CellDoubleClick(object sender, DataGridViewCellEventArgs e) {
-            if (e.RowIndex >= 0) {
-                btnEditarProducto_Click(sender, e);
-            }
-        }
-
         private void btnBuscar_Click(object sender, EventArgs e) {
             BuscarProductos();
         }
@@ -224,9 +246,14 @@ namespace SistemaFarmacia {
             }
 
             var resultados = listaProductos.Where(p =>
+                p.id.ToString().ToLower().Contains(textoBusqueda) ||
                 p.nombre.ToLower().Contains(textoBusqueda) ||
-                p.descripcion.ToLower().Contains(textoBusqueda) ||
                 p.principio_activo.ToLower().Contains(textoBusqueda) ||
+                BuscarNombre(listaLaboratorios, p.laboratorio).Contains(textoBusqueda) ||
+                BuscarNombre(listaCategorias, p.categoria).Contains(textoBusqueda) ||
+                BuscarNombre(listaUbicaciones, p.ubicacion).Contains(textoBusqueda) ||
+                p.presentacion.ToLower().Contains(textoBusqueda) ||
+                p.unidad_medida.ToLower().Contains(textoBusqueda) ||
                 p.estado.ToLower().Contains(textoBusqueda)
             ).ToList();
 
@@ -237,8 +264,17 @@ namespace SistemaFarmacia {
                     producto.nombre,
                     producto.descripcion,
                     producto.principio_activo,
+                    BuscarNombre(listaLaboratorios, producto.laboratorio), //falta jalar datos desde laboratorio
+                    BuscarNombre(listaCategorias, producto.categoria), //falta jalar datos desde categoria
+                    producto.concentracion,
+                    producto.unidad_medida,
+                    producto.presentacion,
                     producto.stock_actual,
-                    $"${producto.precio_unitario:F2}",
+                    producto.stock_minimo,
+                    producto.stock_maximo,
+                    BuscarNombre(listaUbicaciones, producto.ubicacion), //falta jalar datos desde ubicacion
+                    producto.precio_unitario,
+                    producto.costo_unitario,
                     producto.estado
                 );
             }
@@ -476,193 +512,20 @@ namespace SistemaFarmacia {
             LimpiarCamposCategoria();
             HabilitarCamposCategoria(false);
         }
-
-        // ========== MÉTODOS AUXILIARES ==========
-        /*
-        private void AbrirFormularioProducto(clsProducto producto) {
-            formProducto = new FormProducto(producto, listaLaboratorios, listaCategorias);
-            formProducto.ProductoGuardado += (s, productoGuardado) => {
-                if (producto == null) {
-                    // Nuevo producto
-                    listaProductos.Add(productoGuardado);
-                    lblEstado.Text = $"Producto '{productoGuardado.nombre}' creado";
-                }
-                else {
-                    // Editar producto existente
-                    int index = listaProductos.FindIndex(p => p.id == producto.id);
-                    if (index >= 0) {
-                        listaProductos[index] = productoGuardado;
-                        lblEstado.Text = $"Producto '{productoGuardado.nombre}' actualizado";
-                    }
-                }
-                ActualizarDataGridViews();
-            };
-
-            formProducto.ShowDialog();
-        }
-        */
-
         // ========== EVENTOS DEL MENÚ ==========
-
-        private void nuevoProductoToolStripMenuItem_Click(object sender, EventArgs e) {
-            btnNuevoProducto_Click(sender, e);
-        }
-
-        private void editarProductoToolStripMenuItem_Click(object sender, EventArgs e) {
-            btnEditarProducto_Click(sender, e);
-        }
-
-        private void eliminarProductoToolStripMenuItem_Click(object sender, EventArgs e) {
-            btnEliminarProducto_Click(sender, e);
-        }
-
-        private void actualizarListaToolStripMenuItem_Click(object sender, EventArgs e) {
-            btnActualizar_Click(sender, e);
-        }
-
-        private void guardarCambiosToolStripMenuItem_Click(object sender, EventArgs e) {
-            // Guardar cambios en laboratorio o categoría según la pestaña activa
-            if (tabControlPrincipal.SelectedTab == tabLaboratorios) {
-                GuardarLaboratorio();
-            }
-            else if (tabControlPrincipal.SelectedTab == tabCategorias) {
-                GuardarCategoria();
-            }
-            else {
-                MessageBox.Show("No hay cambios para guardar en esta pestaña", "Información",
-                    MessageBoxButtons.OK, MessageBoxIcon.Information);
-            }
-        }
-
-        private void exportarToolStripMenuItem_Click(object sender, EventArgs e) {
-            ExportarDatos();
-        }
-
-        private void salirToolStripMenuItem_Click(object sender, EventArgs e) {
-            this.Close();
-        }
-
-        private void gestiónDeLaboratoriosToolStripMenuItem_Click(object sender, EventArgs e) {
-            tabControlPrincipal.SelectedTab = tabLaboratorios;
-        }
-
-        private void gestiónDeCategoríasToolStripMenuItem_Click(object sender, EventArgs e) {
-            tabControlPrincipal.SelectedTab = tabCategorias;
-        }
-
-        private void acercaDeToolStripMenuItem_Click(object sender, EventArgs e) {
-            MessageBox.Show("Gestión de Productos Farmacéuticos\nVersión 1.0\n© 2024",
-                "Acerca de", MessageBoxButtons.OK, MessageBoxIcon.Information);
-        }
-
-        private void btnExportar_Click(object sender, EventArgs e) {
-            ExportarDatos();
-        }
-
-        private void btnImprimir_Click(object sender, EventArgs e) {
-            ImprimirReporte();
-        }
-
-        private void ExportarDatos() {
-            try {
-                using (SaveFileDialog saveDialog = new SaveFileDialog()) {
-                    saveDialog.Filter = "Archivo CSV (*.csv)|*.csv|Archivo Excel (*.xlsx)|*.xlsx";
-                    saveDialog.FilterIndex = 1;
-                    saveDialog.RestoreDirectory = true;
-
-                    if (saveDialog.ShowDialog() == DialogResult.OK) {
-                        // Aquí iría la lógica para exportar a CSV o Excel
-                        // Por ahora solo mostramos un mensaje
-                        MessageBox.Show($"Datos exportados a: {saveDialog.FileName}",
-                            "Exportación", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                        lblEstado.Text = "Datos exportados correctamente";
-                    }
-                }
-            }
-            catch (Exception ex) {
-                MessageBox.Show($"Error al exportar: {ex.Message}", "Error",
-                    MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-        }
-
-        private void ImprimirReporte() {
-            // Aquí iría la lógica para imprimir
-            MessageBox.Show("Funcionalidad de impresión en desarrollo", "Información",
-                MessageBoxButtons.OK, MessageBoxIcon.Information);
-        }
 
         private void tabControlPrincipal_SelectedIndexChanged(object sender, EventArgs e) {
             // Cuando cambia de pestaña, actualizar el estado
             switch (tabControlPrincipal.SelectedIndex) {
                 case 0:
-                    lblEstado.Text = $"Mostrando {listaProductos.Count} productos";
+                    lblTotal.Text = $"Total: {listaProductos.Count} productos";
                     break;
                 case 1:
-                    lblEstado.Text = $"Mostrando {listaLaboratorios.Count} laboratorios";
+                    lblTotal.Text = $"Total: {listaLaboratorios.Count} laboratorios";
                     break;
                 case 2:
-                    lblEstado.Text = $"Mostrando {listaCategorias.Count} categorías";
+                    lblTotal.Text = $"Total: {listaCategorias.Count} categorías";
                     break;
-            }
-        }
-
-        // ========== VALIDACIÓN DE DATOS ==========
-
-        private bool ValidarLaboratorio() {
-            if (string.IsNullOrWhiteSpace(txtNombreLab.Text)) {
-                MessageBox.Show("El nombre es requerido", "Error",
-                    MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return false;
-            }
-            return true;
-        }
-
-        private bool ValidarCategoria() {
-            if (string.IsNullOrWhiteSpace(txtNombreCat.Text)) {
-                MessageBox.Show("El nombre es requerido", "Error",
-                    MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return false;
-            }
-            return true;
-        }
-
-        // ========== EVENTOS DE VALIDACIÓN ==========
-
-        private void txtNombreLab_Validating(object sender, System.ComponentModel.CancelEventArgs e) {
-            if (string.IsNullOrWhiteSpace(txtNombreLab.Text) && txtNombreLab.Enabled) {
-                //errorProvider1.SetError(txtNombreLab, "El nombre es requerido");
-                e.Cancel = true;
-            }
-            else {
-                //errorProvider1.SetError(txtNombreLab, "");
-            }
-        }
-
-        private void txtNombreCat_Validating(object sender, System.ComponentModel.CancelEventArgs e) {
-            if (string.IsNullOrWhiteSpace(txtNombreCat.Text) && txtNombreCat.Enabled) {
-                //errorProvider1.SetError(txtNombreCat, "El nombre es requerido");
-                e.Cancel = true;
-            }
-            else {
-                //errorProvider1.SetError(txtNombreCat, "");
-            }
-        }
-
-        // ========== MÉTODOS PARA PERSISTENCIA (BASE DE DATOS) ==========
-
-        private void GuardarCambiosEnBaseDeDatos() {
-            try {
-                // Aquí iría la lógica para guardar en base de datos
-                // Por ahora solo actualizamos las listas en memoria
-
-                MessageBox.Show("Cambios guardados exitosamente", "Éxito",
-                    MessageBoxButtons.OK, MessageBoxIcon.Information);
-                lblEstado.Text = "Cambios guardados";
-            }
-            catch (Exception ex) {
-                MessageBox.Show($"Error al guardar: {ex.Message}", "Error",
-                    MessageBoxButtons.OK, MessageBoxIcon.Error);
-                lblEstado.Text = "Error al guardar cambios";
             }
         }
     }
