@@ -25,10 +25,10 @@ namespace SistemaFarmacia {
         /// the contents of this method with the code editor.
         /// </summary>
         private void InitializeComponent() {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             this.tabControlPrincipal = new System.Windows.Forms.TabControl();
             this.tabProductos = new System.Windows.Forms.TabPage();
             this.splitContainerProductos = new System.Windows.Forms.SplitContainer();
@@ -74,6 +74,7 @@ namespace SistemaFarmacia {
             this.panelInferior = new System.Windows.Forms.Panel();
             this.lblEstado = new System.Windows.Forms.Label();
             this.lblTotal = new System.Windows.Forms.Label();
+            this.tabUbicaciones = new System.Windows.Forms.TabPage();
             this.tabControlPrincipal.SuspendLayout();
             this.tabProductos.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerProductos)).BeginInit();
@@ -109,6 +110,7 @@ namespace SistemaFarmacia {
             this.tabControlPrincipal.Controls.Add(this.tabProductos);
             this.tabControlPrincipal.Controls.Add(this.tabLaboratorios);
             this.tabControlPrincipal.Controls.Add(this.tabCategorias);
+            this.tabControlPrincipal.Controls.Add(this.tabUbicaciones);
             this.tabControlPrincipal.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tabControlPrincipal.Location = new System.Drawing.Point(0, 0);
             this.tabControlPrincipal.Name = "tabControlPrincipal";
@@ -203,36 +205,36 @@ namespace SistemaFarmacia {
             this.dgvProductos.AllowUserToAddRows = false;
             this.dgvProductos.AllowUserToDeleteRows = false;
             this.dgvProductos.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle5.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle5.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle5.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle5.Padding = new System.Windows.Forms.Padding(5, 8, 5, 8);
-            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvProductos.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle1.Padding = new System.Windows.Forms.Padding(5, 8, 5, 8);
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvProductos.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.dgvProductos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle6.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle6.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle6.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgvProductos.DefaultCellStyle = dataGridViewCellStyle6;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvProductos.DefaultCellStyle = dataGridViewCellStyle2;
             this.dgvProductos.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.dgvProductos.Location = new System.Drawing.Point(0, 69);
             this.dgvProductos.Name = "dgvProductos";
             this.dgvProductos.ReadOnly = true;
-            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle7.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle7.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle7.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle7.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle7.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvProductos.RowHeadersDefaultCellStyle = dataGridViewCellStyle7;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvProductos.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
             this.dgvProductos.RowHeadersVisible = false;
             this.dgvProductos.RowHeadersWidth = 51;
             this.dgvProductos.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
@@ -266,6 +268,7 @@ namespace SistemaFarmacia {
             this.btnEliminarProducto.TabIndex = 3;
             this.btnEliminarProducto.Text = "Eliminar";
             this.btnEliminarProducto.UseVisualStyleBackColor = false;
+            this.btnEliminarProducto.Click += new System.EventHandler(this.btnEliminarProducto_Click);
             // 
             // btnEditarProducto
             // 
@@ -364,6 +367,7 @@ namespace SistemaFarmacia {
             this.dgvLaboratorios.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvLaboratorios.Size = new System.Drawing.Size(768, 505);
             this.dgvLaboratorios.TabIndex = 0;
+            this.dgvLaboratorios.SelectionChanged += new System.EventHandler(this.dgvLaboratorios_SelectionChanged);
             // 
             // groupBoxAccionesLaboratorio
             // 
@@ -389,6 +393,7 @@ namespace SistemaFarmacia {
             this.btnEliminarLaboratorio.TabIndex = 2;
             this.btnEliminarLaboratorio.Text = "Eliminar";
             this.btnEliminarLaboratorio.UseVisualStyleBackColor = false;
+            this.btnEliminarLaboratorio.Click += new System.EventHandler(this.btnEliminarLaboratorio_Click);
             // 
             // btnEditarLaboratorio
             // 
@@ -402,6 +407,7 @@ namespace SistemaFarmacia {
             this.btnEditarLaboratorio.TabIndex = 1;
             this.btnEditarLaboratorio.Text = "Editar";
             this.btnEditarLaboratorio.UseVisualStyleBackColor = false;
+            this.btnEditarLaboratorio.Click += new System.EventHandler(this.btnEditarLaboratorio_Click);
             // 
             // btnNuevoLaboratorio
             // 
@@ -415,6 +421,7 @@ namespace SistemaFarmacia {
             this.btnNuevoLaboratorio.TabIndex = 0;
             this.btnNuevoLaboratorio.Text = "Nuevo";
             this.btnNuevoLaboratorio.UseVisualStyleBackColor = false;
+            this.btnNuevoLaboratorio.Click += new System.EventHandler(this.btnNuevoLaboratorio_Click);
             // 
             // groupBoxDetallesLaboratorio
             // 
@@ -438,6 +445,7 @@ namespace SistemaFarmacia {
             this.txtTelefonoLab.Name = "txtTelefonoLab";
             this.txtTelefonoLab.Size = new System.Drawing.Size(280, 20);
             this.txtTelefonoLab.TabIndex = 5;
+            this.txtTelefonoLab.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtTelefonoLab_KeyPress);
             // 
             // label18
             // 
@@ -525,14 +533,14 @@ namespace SistemaFarmacia {
             this.dgvCategorias.AllowUserToAddRows = false;
             this.dgvCategorias.AllowUserToDeleteRows = false;
             this.dgvCategorias.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle8.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle8.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle8.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle8.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle8.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle8.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvCategorias.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle8;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvCategorias.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle4;
             this.dgvCategorias.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvCategorias.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgvCategorias.Location = new System.Drawing.Point(3, 16);
@@ -542,6 +550,7 @@ namespace SistemaFarmacia {
             this.dgvCategorias.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvCategorias.Size = new System.Drawing.Size(768, 505);
             this.dgvCategorias.TabIndex = 0;
+            this.dgvCategorias.SelectionChanged += new System.EventHandler(this.dgvCategorias_SelectionChanged);
             // 
             // groupBoxAccionesCategoria
             // 
@@ -567,6 +576,7 @@ namespace SistemaFarmacia {
             this.btnEliminarCategoria.TabIndex = 2;
             this.btnEliminarCategoria.Text = "Eliminar";
             this.btnEliminarCategoria.UseVisualStyleBackColor = false;
+            this.btnEliminarCategoria.Click += new System.EventHandler(this.btnEliminarCategoria_Click);
             // 
             // btnEditarCategoria
             // 
@@ -580,6 +590,7 @@ namespace SistemaFarmacia {
             this.btnEditarCategoria.TabIndex = 1;
             this.btnEditarCategoria.Text = "Editar";
             this.btnEditarCategoria.UseVisualStyleBackColor = false;
+            this.btnEditarCategoria.Click += new System.EventHandler(this.btnEditarCategoria_Click);
             // 
             // btnNuevaCategoria
             // 
@@ -593,6 +604,7 @@ namespace SistemaFarmacia {
             this.btnNuevaCategoria.TabIndex = 0;
             this.btnNuevaCategoria.Text = "Nueva";
             this.btnNuevaCategoria.UseVisualStyleBackColor = false;
+            this.btnNuevaCategoria.Click += new System.EventHandler(this.btnNuevaCategoria_Click);
             // 
             // groupBoxDetallesCategoria
             // 
@@ -673,6 +685,15 @@ namespace SistemaFarmacia {
             this.lblTotal.TabIndex = 0;
             this.lblTotal.Text = "Total: 0 items";
             // 
+            // tabUbicaciones
+            // 
+            this.tabUbicaciones.Location = new System.Drawing.Point(4, 22);
+            this.tabUbicaciones.Name = "tabUbicaciones";
+            this.tabUbicaciones.Size = new System.Drawing.Size(1169, 574);
+            this.tabUbicaciones.TabIndex = 3;
+            this.tabUbicaciones.Text = "Ubicaciones";
+            this.tabUbicaciones.UseVisualStyleBackColor = true;
+            // 
             // VentanaPrincipal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -684,6 +705,7 @@ namespace SistemaFarmacia {
             this.Name = "VentanaPrincipal";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Ventana Principal";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.VentanaPrincipal_FormClosed);
             this.Load += new System.EventHandler(this.VentanaPrincipal_Load);
             this.tabControlPrincipal.ResumeLayout(false);
             this.tabProductos.ResumeLayout(false);
@@ -768,5 +790,6 @@ namespace SistemaFarmacia {
         private System.Windows.Forms.Label label19;
         private System.Windows.Forms.Label lblTotal;
         private System.Windows.Forms.Label lblEstado;
+        private TabPage tabUbicaciones;
     }
 }

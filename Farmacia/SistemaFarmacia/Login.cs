@@ -28,7 +28,7 @@ namespace SistemaFarmacia {
                 for(int i = 1; i < num+1; i++) {
                     clsUsuario temp = blu.leer_usuario(i);
                     if ((txtUsuario.Text == temp.username) && (txtContrasena.Text == temp.contrasena)) {
-                        VentanaPrincipal ven = new VentanaPrincipal(this);
+                        VentanaPrincipal ven = new VentanaPrincipal(this, temp);
                         ven.Show();
                         this.Hide();
                         comp = true;

@@ -21,13 +21,15 @@ namespace SistemaFarmacia {
         private clsProducto productoSeleccionado = null;
         private clsLaboratorio laboratorioSeleccionado = null;
         private clsCategoria categoriaSeleccionada = null;
+        private clsUsuario usu = null;
 
         private Form ven;
 
-        public VentanaPrincipal(Form ven) {
+        public VentanaPrincipal(Form ven, clsUsuario usu) {
             InitializeComponent();
             ConfigurarDataGridViews();
             this.ven = ven;
+            this.usu = usu;
         }
 
         private void VentanaPrincipal_Load(object sender, EventArgs e) {
@@ -132,6 +134,7 @@ namespace SistemaFarmacia {
             }
             return "error";
         }
+
         private string BuscarNombre(List<clsUbicacion> a, int b) {
             for (int i = 0; i < a.Count; i++) {
                 if (a[i].id == b) {
@@ -140,28 +143,31 @@ namespace SistemaFarmacia {
             }
             return "error";
         }
+
         private void ActualizarDataGridViews() {
             // Actualizar DataGridView de productos
             dgvProductos.Rows.Clear();
             foreach (var producto in listaProductos) {
-                dgvProductos.Rows.Add(
-                    producto.id,
-                    producto.nombre,
-                    producto.descripcion,
-                    producto.principio_activo,
-                    BuscarNombre(listaLaboratorios, producto.laboratorio), //falta jalar datos desde laboratorio
-                    BuscarNombre(listaCategorias, producto.categoria), //falta jalar datos desde categoria
-                    producto.concentracion,
-                    producto.unidad_medida,
-                    producto.presentacion,
-                    producto.stock_actual,
-                    producto.stock_minimo,
-                    producto.stock_maximo,
-                    BuscarNombre(listaUbicaciones, producto.ubicacion), //falta jalar datos desde ubicacion
-                    producto.precio_unitario,
-                    producto.costo_unitario,
-                    producto.estado
-                );
+                if(producto.estado != "B") {
+                    dgvProductos.Rows.Add(
+                        producto.id,
+                        producto.nombre,
+                        producto.descripcion,
+                        producto.principio_activo,
+                        BuscarNombre(listaLaboratorios, producto.laboratorio),
+                        BuscarNombre(listaCategorias, producto.categoria),
+                        producto.concentracion,
+                        producto.unidad_medida,
+                        producto.presentacion,
+                        producto.stock_actual,
+                        producto.stock_minimo,
+                        producto.stock_maximo,
+                        BuscarNombre(listaUbicaciones, producto.ubicacion),
+                        producto.precio_unitario,
+                        producto.costo_unitario,
+                        producto.estado
+                    );
+                }
             }
 
             // Actualizar DataGridView de Laboratorios
@@ -182,6 +188,7 @@ namespace SistemaFarmacia {
         private void ActualizarContadores() {
             lblTotal.Text = $"Total: {listaProductos.Count} productos";
         }
+
         private void btnNuevoProducto_Click(object sender, EventArgs e) {
             FormularioAgregar ven2 = new FormularioAgregar();
             ven2.FormClosed += (s, args) => {
@@ -199,27 +206,14 @@ namespace SistemaFarmacia {
             };
             ven3.Show();
         }
-        //--------------------------------------------------------
-        private void btnEliminarProducto_Click(object sender, EventArgs e) {
-            if (productoSeleccionado != null) {
-                DialogResult result = MessageBox.Show(
-                    $"¿Está seguro de eliminar el producto '{productoSeleccionado.nombre}'?",
-                    "Confirmar eliminación",
-                    MessageBoxButtons.YesNo,
-                    MessageBoxIcon.Question);
 
-                if (result == DialogResult.Yes) {
-                    // Aquí iría la lógica para eliminar de la base de datos
-                    listaProductos.Remove(productoSeleccionado);
-                    ActualizarDataGridViews();
-                    lblEstado.Text = $"Producto '{productoSeleccionado.nombre}' eliminado";
-                    productoSeleccionado = null;
-                }
-            }
-            else {
-                MessageBox.Show("Seleccione un producto para eliminar", "Advertencia",
-                    MessageBoxButtons.OK, MessageBoxIcon.Warning);
-            }
+        private void btnEliminarProducto_Click(object sender, EventArgs e) {
+            FormularioEliminar ven4 = new FormularioEliminar(usu);
+            ven4.FormClosed += (s, args) => {
+                CargarDatosIniciales();
+                lblEstado.Text = "Producto Eliminado Correctamente";
+            };
+            ven4.Show();
         }
 
         private void btnActualizar_Click(object sender, EventArgs e) {
@@ -249,9 +243,9 @@ namespace SistemaFarmacia {
                 p.id.ToString().ToLower().Contains(textoBusqueda) ||
                 p.nombre.ToLower().Contains(textoBusqueda) ||
                 p.principio_activo.ToLower().Contains(textoBusqueda) ||
-                BuscarNombre(listaLaboratorios, p.laboratorio).Contains(textoBusqueda) ||
-                BuscarNombre(listaCategorias, p.categoria).Contains(textoBusqueda) ||
-                BuscarNombre(listaUbicaciones, p.ubicacion).Contains(textoBusqueda) ||
+                BuscarNombre(listaLaboratorios, p.laboratorio).ToLower().Contains(textoBusqueda) ||
+                BuscarNombre(listaCategorias, p.categoria).ToLower().Contains(textoBusqueda) ||
+                BuscarNombre(listaUbicaciones, p.ubicacion).ToLower().Contains(textoBusqueda) ||
                 p.presentacion.ToLower().Contains(textoBusqueda) ||
                 p.unidad_medida.ToLower().Contains(textoBusqueda) ||
                 p.estado.ToLower().Contains(textoBusqueda)
@@ -288,21 +282,45 @@ namespace SistemaFarmacia {
         }
 
         // ========== EVENTOS DE LABORATORIOS ==========
-
         private void btnNuevoLaboratorio_Click(object sender, EventArgs e) {
+            if (string.IsNullOrWhiteSpace(txtNombreLab.Text)) {
+                MessageBox.Show("El nombre del laboratorio es requerido"
+                    , "Error"
+                    , MessageBoxButtons.OK
+                    , MessageBoxIcon.Error);
+                txtNombreLab.Focus();
+                return;
+            }
+
+            // Nuevo laboratorio
+            clsLaboratorio nuevolab = new clsLaboratorio {
+                id = 0,
+                nombre = txtNombreLab.Text.Trim(),
+                direccion = txtDireccionLab.Text.Trim(),
+                telefono = txtTelefonoLab.Text.Trim()
+            };
+            blLaboratorio lab = new blLaboratorio();
+            lab.agregar_laboratorio(nuevolab);
+
+            lblEstado.Text = $"Laboratorio '{nuevolab.nombre}' creado";
+            CargarDatosIniciales();
             LimpiarCamposLaboratorio();
-            HabilitarCamposLaboratorio(true);
         }
 
         private void btnEditarLaboratorio_Click(object sender, EventArgs e) {
-            if (laboratorioSeleccionado != null) {
-                CargarDatosLaboratorio();
-                HabilitarCamposLaboratorio(true);
-            }
-            else {
-                MessageBox.Show("Seleccione un laboratorio para editar", "Advertencia",
-                    MessageBoxButtons.OK, MessageBoxIcon.Warning);
-            }
+            // Actualizar laboratorio
+            clsLaboratorio nuevolab = new clsLaboratorio {
+                id = laboratorioSeleccionado.id,
+                nombre = txtNombreLab.Text.Trim(),
+                direccion = txtDireccionLab.Text.Trim(),
+                telefono = txtTelefonoLab.Text.Trim()
+            };
+            blLaboratorio lab = new blLaboratorio();
+            lab.actualizar_laboratorio(nuevolab);
+
+            lblEstado.Text = $"Laboratorio '{nuevolab.nombre}' actualizado";
+            CargarDatosIniciales();
+            LimpiarCamposLaboratorio();
         }
 
         private void btnEliminarLaboratorio_Click(object sender, EventArgs e) {
@@ -324,10 +342,12 @@ namespace SistemaFarmacia {
                     }
 
                     // Eliminar de la lista
-                    listaLaboratorios.Remove(laboratorioSeleccionado);
-                    ActualizarDataGridViews();
-                    LimpiarCamposLaboratorio();
+                    blLaboratorio lab = new blLaboratorio();
+                    lab.eliminar_laboratorio(laboratorioSeleccionado);
+
                     lblEstado.Text = $"Laboratorio '{laboratorioSeleccionado.nombre}' eliminado";
+                    CargarDatosIniciales();
+                    LimpiarCamposLaboratorio();
                     laboratorioSeleccionado = null;
                 }
             }
@@ -340,16 +360,12 @@ namespace SistemaFarmacia {
         private void dgvLaboratorios_SelectionChanged(object sender, EventArgs e) {
             if (dgvLaboratorios.SelectedRows.Count > 0) {
                 int id = Convert.ToInt32(dgvLaboratorios.SelectedRows[0].Cells["id"].Value);
-                laboratorioSeleccionado = listaLaboratorios.FirstOrDefault(l => l.id == id);
-                CargarDatosLaboratorio();
-            }
-        }
-
-        private void CargarDatosLaboratorio() {
-            if (laboratorioSeleccionado != null) {
-                txtNombreLab.Text = laboratorioSeleccionado.nombre;
-                txtDireccionLab.Text = laboratorioSeleccionado.direccion;
-                txtTelefonoLab.Text = laboratorioSeleccionado.telefono;
+                laboratorioSeleccionado = listaLaboratorios.FirstOrDefault(c => c.id == id);
+                if (laboratorioSeleccionado != null) {
+                    txtNombreLab.Text = laboratorioSeleccionado.nombre;
+                    txtDireccionLab.Text = laboratorioSeleccionado.direccion;
+                    txtTelefonoLab.Text = laboratorioSeleccionado.telefono;
+                }
             }
         }
 
@@ -360,45 +376,6 @@ namespace SistemaFarmacia {
             laboratorioSeleccionado = null;
         }
 
-        private void HabilitarCamposLaboratorio(bool habilitar) {
-            txtNombreLab.Enabled = habilitar;
-            txtDireccionLab.Enabled = habilitar;
-            txtTelefonoLab.Enabled = habilitar;
-        }
-
-        private void GuardarLaboratorio() {
-            if (string.IsNullOrWhiteSpace(txtNombreLab.Text)) {
-                MessageBox.Show("El nombre del laboratorio es requerido", "Error",
-                    MessageBoxButtons.OK, MessageBoxIcon.Error);
-                txtNombreLab.Focus();
-                return;
-            }
-
-            if (laboratorioSeleccionado == null) {
-                // Nuevo laboratorio
-                int nuevoId = listaLaboratorios.Count > 0 ? listaLaboratorios.Max(l => l.id) + 1 : 1;
-                var nuevoLab = new clsLaboratorio(
-                    nuevoId,
-                    txtNombreLab.Text.Trim(),
-                    txtDireccionLab.Text.Trim(),
-                    txtTelefonoLab.Text.Trim()
-                );
-                listaLaboratorios.Add(nuevoLab);
-                lblEstado.Text = $"Laboratorio '{nuevoLab.nombre}' creado";
-            }
-            else {
-                // Editar laboratorio existente
-                laboratorioSeleccionado.nombre = txtNombreLab.Text.Trim();
-                laboratorioSeleccionado.direccion = txtDireccionLab.Text.Trim();
-                laboratorioSeleccionado.telefono = txtTelefonoLab.Text.Trim();
-                lblEstado.Text = $"Laboratorio '{laboratorioSeleccionado.nombre}' actualizado";
-            }
-
-            ActualizarDataGridViews();
-            LimpiarCamposLaboratorio();
-            HabilitarCamposLaboratorio(false);
-        }
-
         private void txtTelefonoLab_KeyPress(object sender, KeyPressEventArgs e) {
             // Permitir solo números, backspace, y guiones
             if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) && e.KeyChar != '-') {
@@ -407,21 +384,43 @@ namespace SistemaFarmacia {
         }
 
         // ========== EVENTOS DE CATEGORÍAS ==========
-
         private void btnNuevaCategoria_Click(object sender, EventArgs e) {
+            if (string.IsNullOrWhiteSpace(txtNombreCat.Text)) {
+                MessageBox.Show("El nombre de la categoría es requerido"
+                    , "Error"
+                    , MessageBoxButtons.OK
+                    , MessageBoxIcon.Error);
+                txtNombreCat.Focus();
+                return;
+            }
+
+            // Nueva Categoria
+            clsCategoria nuevacat = new clsCategoria {
+                id = 0,
+                nombre = txtNombreCat.Text.Trim(),
+                descripcion = txtDescripcionCat.Text.Trim()
+            };
+            blCategoria cat = new blCategoria();
+            cat.agregar_categoria(nuevacat);
+
+            lblEstado.Text = $"Categoría '{nuevacat.nombre}' creada";
+            CargarDatosIniciales();
             LimpiarCamposCategoria();
-            HabilitarCamposCategoria(true);
         }
 
         private void btnEditarCategoria_Click(object sender, EventArgs e) {
-            if (categoriaSeleccionada != null) {
-                CargarDatosCategoria();
-                HabilitarCamposCategoria(true);
-            }
-            else {
-                MessageBox.Show("Seleccione una categoría para editar", "Advertencia",
-                    MessageBoxButtons.OK, MessageBoxIcon.Warning);
-            }
+            // Actualizar Categoria
+            clsCategoria nuevacat = new clsCategoria {
+                id = laboratorioSeleccionado.id,
+                nombre = txtNombreCat.Text.Trim(),
+                descripcion = txtDescripcionCat.Text.Trim()
+            };
+            blCategoria cat = new blCategoria();
+            cat.actualizar_categoria(nuevacat);
+
+            lblEstado.Text = $"Categoría '{categoriaSeleccionada.nombre}' actualizada";
+            CargarDatosIniciales();
+            LimpiarCamposLaboratorio();
         }
 
         private void btnEliminarCategoria_Click(object sender, EventArgs e) {
@@ -443,9 +442,11 @@ namespace SistemaFarmacia {
                     }
 
                     // Eliminar de la lista
-                    listaCategorias.Remove(categoriaSeleccionada);
-                    ActualizarDataGridViews();
-                    LimpiarCamposCategoria();
+                    blCategoria cat = new blCategoria();
+                    cat.eliminar_categoria(categoriaSeleccionada);
+
+                    CargarDatosIniciales();
+                    LimpiarCamposLaboratorio();
                     lblEstado.Text = $"Categoría '{categoriaSeleccionada.nombre}' eliminada";
                     categoriaSeleccionada = null;
                 }
@@ -477,43 +478,7 @@ namespace SistemaFarmacia {
             categoriaSeleccionada = null;
         }
 
-        private void HabilitarCamposCategoria(bool habilitar) {
-            txtNombreCat.Enabled = habilitar;
-            txtDescripcionCat.Enabled = habilitar;
-        }
-
-        private void GuardarCategoria() {
-            if (string.IsNullOrWhiteSpace(txtNombreCat.Text)) {
-                MessageBox.Show("El nombre de la categoría es requerido", "Error",
-                    MessageBoxButtons.OK, MessageBoxIcon.Error);
-                txtNombreCat.Focus();
-                return;
-            }
-
-            if (categoriaSeleccionada == null) {
-                // Nueva categoría
-                int nuevoId = listaCategorias.Count > 0 ? listaCategorias.Max(c => c.id) + 1 : 1;
-                var nuevaCat = new clsCategoria(
-                    nuevoId,
-                    txtNombreCat.Text.Trim(),
-                    txtDescripcionCat.Text.Trim()
-                );
-                listaCategorias.Add(nuevaCat);
-                lblEstado.Text = $"Categoría '{nuevaCat.nombre}' creada";
-            }
-            else {
-                // Editar categoría existente
-                categoriaSeleccionada.nombre = txtNombreCat.Text.Trim();
-                categoriaSeleccionada.descripcion = txtDescripcionCat.Text.Trim();
-                lblEstado.Text = $"Categoría '{categoriaSeleccionada.nombre}' actualizada";
-            }
-
-            ActualizarDataGridViews();
-            LimpiarCamposCategoria();
-            HabilitarCamposCategoria(false);
-        }
         // ========== EVENTOS DEL MENÚ ==========
-
         private void tabControlPrincipal_SelectedIndexChanged(object sender, EventArgs e) {
             // Cuando cambia de pestaña, actualizar el estado
             switch (tabControlPrincipal.SelectedIndex) {
@@ -527,6 +492,10 @@ namespace SistemaFarmacia {
                     lblTotal.Text = $"Total: {listaCategorias.Count} categorías";
                     break;
             }
+        }
+
+        private void VentanaPrincipal_FormClosed(object sender, FormClosedEventArgs e) {
+            ven.Close();
         }
     }
 }

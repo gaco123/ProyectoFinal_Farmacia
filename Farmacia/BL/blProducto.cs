@@ -20,9 +20,9 @@ namespace BL {
             dalProducto xdp = new dalProducto();
             xdp.actualizar_producto(xpro);
         }
-        public void eliminar_producto(clsProducto xpro) {
+        public void eliminar_producto(int id, string motivo, int usuario) {
             dalProducto xdp = new dalProducto();
-            xdp.eliminar_producto(xpro);
+            xdp.eliminar_producto(id, motivo, usuario);
         }
         public int contar_producto() {
             dalProducto xdp = new dalProducto();

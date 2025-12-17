@@ -378,8 +378,7 @@
             this.cmbEstado.FormattingEnabled = true;
             this.cmbEstado.Items.AddRange(new object[] {
             "A",
-            "B",
-            "C"});
+            "B"});
             this.cmbEstado.Location = new System.Drawing.Point(171, 277);
             this.cmbEstado.Name = "cmbEstado";
             this.cmbEstado.Size = new System.Drawing.Size(192, 23);

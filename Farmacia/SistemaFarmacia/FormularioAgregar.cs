@@ -69,7 +69,7 @@ namespace SistemaFarmacia {
             foreach (var ubi in ubicaciones) {
                 cmbUbicacion.Items.Add(new ComboItem($"{ubi.zona} - {ubi.estante} - {ubi.nivel}", ubi.id));
             }
-            if (cmbUbicacion.Items.Count > 0)
+            if (cmbUbicacion.Items.Count > 0) 
                 cmbUbicacion.SelectedIndex = 0;
 
             CargarDatosIniciales();
@@ -240,7 +240,7 @@ namespace SistemaFarmacia {
             try {
                 // Crear nuevo producto
                 Producto = new clsProducto {
-                    // El ID se generará automáticamente en la base de datos
+                    id = 0,
                     nombre = txtNombre.Text.Trim(),
                     descripcion = txtDescripcion.Text.Trim(),
                     principio_activo = txtPrincipioActivo.Text.Trim(),

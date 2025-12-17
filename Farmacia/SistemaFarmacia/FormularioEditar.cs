@@ -55,7 +55,9 @@ namespace SistemaFarmacia {
             //Cargar ids productos
             cmbId.Items.Clear();
             foreach (var pro in productos) {
-                cmbId.Items.Add(new ComboItem(pro.nombre, pro.id));
+                if(pro.estado != "B") {
+                    cmbId.Items.Add(new ComboItem(pro.nombre, pro.id));
+                }
             }
 
             // Cargar laboratorios

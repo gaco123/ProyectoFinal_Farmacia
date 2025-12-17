@@ -380,8 +380,7 @@
             this.cmbEstado.FormattingEnabled = true;
             this.cmbEstado.Items.AddRange(new object[] {
             "A",
-            "B",
-            "C"});
+            "B"});
             this.cmbEstado.Location = new System.Drawing.Point(171, 321);
             this.cmbEstado.Name = "cmbEstado";
             this.cmbEstado.Size = new System.Drawing.Size(191, 23);
@@ -434,8 +433,7 @@
             this.cmbId.FormattingEnabled = true;
             this.cmbId.Items.AddRange(new object[] {
             "A",
-            "I",
-            "D"});
+            "B"});
             this.cmbId.Location = new System.Drawing.Point(12, 32);
             this.cmbId.Name = "cmbId";
             this.cmbId.Size = new System.Drawing.Size(158, 23);

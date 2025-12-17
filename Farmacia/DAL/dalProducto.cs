@@ -82,11 +82,13 @@ namespace DAL {
             xcon.exec_command();
             xcon.con.Close();
         }
-        public void eliminar_producto(clsProducto xpro) {
+        public void eliminar_producto(int id, string motivo, int usuario) {
             SQLCon xcon = new SQLCon();
             xcon.cmd.CommandText = "producto_delete";
             xcon.cmd.CommandType = System.Data.CommandType.StoredProcedure;
-            xcon.cmd.Parameters.AddWithValue("@producto", xpro.id);
+            xcon.cmd.Parameters.AddWithValue("@producto", id);
+            xcon.cmd.Parameters.AddWithValue("@motivo", motivo);
+            xcon.cmd.Parameters.AddWithValue("@usuario", usuario);
             xcon.exec_command();
             xcon.con.Close();
         }

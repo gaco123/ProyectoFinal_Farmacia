@@ -46,6 +46,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="FormularioEliminar.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormularioEliminar.Designer.cs">
+      <DependentUpon>FormularioEliminar.cs</DependentUpon>
+    </Compile>
     <Compile Include="FormularioEditar.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -84,6 +90,9 @@
     <Compile Include="VentanaPrincipal.Designer.cs">
       <DependentUpon>VentanaPrincipal.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="FormularioEliminar.resx">
+      <DependentUpon>FormularioEliminar.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FormularioEditar.resx">
       <DependentUpon>FormularioEditar.cs</DependentUpon>
     </EmbeddedResource>
