@@ -29,7 +29,8 @@ namespace SistemaFarmacia {
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
-            this.tabControlPrincipal = new System.Windows.Forms.TabControl();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            this.btnNuevaUbicacion = new System.Windows.Forms.TabControl();
             this.tabProductos = new System.Windows.Forms.TabPage();
             this.splitContainerProductos = new System.Windows.Forms.SplitContainer();
             this.groupBoxBusqueda = new System.Windows.Forms.GroupBox();
@@ -71,11 +72,24 @@ namespace SistemaFarmacia {
             this.label20 = new System.Windows.Forms.Label();
             this.txtNombreCat = new System.Windows.Forms.TextBox();
             this.label19 = new System.Windows.Forms.Label();
+            this.tabUbicaciones = new System.Windows.Forms.TabPage();
+            this.groupBoxAccionesUbicaciones = new System.Windows.Forms.GroupBox();
+            this.btnEliminarUbicacion = new System.Windows.Forms.Button();
+            this.btnEditarUbicacion = new System.Windows.Forms.Button();
+            this.button3 = new System.Windows.Forms.Button();
+            this.groupBoxListaUbicaciones = new System.Windows.Forms.GroupBox();
+            this.dgvUbicaciones = new System.Windows.Forms.DataGridView();
+            this.groupBoxDetallesUbicacion = new System.Windows.Forms.GroupBox();
+            this.numNivelUbi = new System.Windows.Forms.NumericUpDown();
+            this.lblNivel = new System.Windows.Forms.Label();
+            this.numEstanteUbi = new System.Windows.Forms.NumericUpDown();
+            this.lblEstante = new System.Windows.Forms.Label();
+            this.txtZonaUbi = new System.Windows.Forms.TextBox();
+            this.lblZona = new System.Windows.Forms.Label();
             this.panelInferior = new System.Windows.Forms.Panel();
             this.lblEstado = new System.Windows.Forms.Label();
             this.lblTotal = new System.Windows.Forms.Label();
-            this.tabUbicaciones = new System.Windows.Forms.TabPage();
-            this.tabControlPrincipal.SuspendLayout();
+            this.btnNuevaUbicacion.SuspendLayout();
             this.tabProductos.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerProductos)).BeginInit();
             this.splitContainerProductos.Panel1.SuspendLayout();
@@ -102,22 +116,29 @@ namespace SistemaFarmacia {
             ((System.ComponentModel.ISupportInitialize)(this.dgvCategorias)).BeginInit();
             this.groupBoxAccionesCategoria.SuspendLayout();
             this.groupBoxDetallesCategoria.SuspendLayout();
+            this.tabUbicaciones.SuspendLayout();
+            this.groupBoxAccionesUbicaciones.SuspendLayout();
+            this.groupBoxListaUbicaciones.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvUbicaciones)).BeginInit();
+            this.groupBoxDetallesUbicacion.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numNivelUbi)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numEstanteUbi)).BeginInit();
             this.panelInferior.SuspendLayout();
             this.SuspendLayout();
             // 
-            // tabControlPrincipal
+            // btnNuevaUbicacion
             // 
-            this.tabControlPrincipal.Controls.Add(this.tabProductos);
-            this.tabControlPrincipal.Controls.Add(this.tabLaboratorios);
-            this.tabControlPrincipal.Controls.Add(this.tabCategorias);
-            this.tabControlPrincipal.Controls.Add(this.tabUbicaciones);
-            this.tabControlPrincipal.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tabControlPrincipal.Location = new System.Drawing.Point(0, 0);
-            this.tabControlPrincipal.Name = "tabControlPrincipal";
-            this.tabControlPrincipal.SelectedIndex = 0;
-            this.tabControlPrincipal.Size = new System.Drawing.Size(1177, 600);
-            this.tabControlPrincipal.TabIndex = 0;
-            this.tabControlPrincipal.SelectedIndexChanged += new System.EventHandler(this.tabControlPrincipal_SelectedIndexChanged);
+            this.btnNuevaUbicacion.Controls.Add(this.tabProductos);
+            this.btnNuevaUbicacion.Controls.Add(this.tabLaboratorios);
+            this.btnNuevaUbicacion.Controls.Add(this.tabCategorias);
+            this.btnNuevaUbicacion.Controls.Add(this.tabUbicaciones);
+            this.btnNuevaUbicacion.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.btnNuevaUbicacion.Location = new System.Drawing.Point(0, 0);
+            this.btnNuevaUbicacion.Name = "btnNuevaUbicacion";
+            this.btnNuevaUbicacion.SelectedIndex = 0;
+            this.btnNuevaUbicacion.Size = new System.Drawing.Size(1177, 600);
+            this.btnNuevaUbicacion.TabIndex = 0;
+            this.btnNuevaUbicacion.SelectedIndexChanged += new System.EventHandler(this.tabControlPrincipal_SelectedIndexChanged);
             // 
             // tabProductos
             // 
@@ -431,7 +452,7 @@ namespace SistemaFarmacia {
             this.groupBoxDetallesLaboratorio.Controls.Add(this.label17);
             this.groupBoxDetallesLaboratorio.Controls.Add(this.txtNombreLab);
             this.groupBoxDetallesLaboratorio.Controls.Add(this.label16);
-            this.groupBoxDetallesLaboratorio.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.groupBoxDetallesLaboratorio.Dock = System.Windows.Forms.DockStyle.Right;
             this.groupBoxDetallesLaboratorio.Location = new System.Drawing.Point(0, 0);
             this.groupBoxDetallesLaboratorio.Name = "groupBoxDetallesLaboratorio";
             this.groupBoxDetallesLaboratorio.Size = new System.Drawing.Size(385, 568);
@@ -612,7 +633,7 @@ namespace SistemaFarmacia {
             this.groupBoxDetallesCategoria.Controls.Add(this.label20);
             this.groupBoxDetallesCategoria.Controls.Add(this.txtNombreCat);
             this.groupBoxDetallesCategoria.Controls.Add(this.label19);
-            this.groupBoxDetallesCategoria.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.groupBoxDetallesCategoria.Dock = System.Windows.Forms.DockStyle.Right;
             this.groupBoxDetallesCategoria.Location = new System.Drawing.Point(0, 0);
             this.groupBoxDetallesCategoria.Name = "groupBoxDetallesCategoria";
             this.groupBoxDetallesCategoria.Size = new System.Drawing.Size(385, 568);
@@ -654,6 +675,189 @@ namespace SistemaFarmacia {
             this.label19.TabIndex = 0;
             this.label19.Text = "Nombre:";
             // 
+            // tabUbicaciones
+            // 
+            this.tabUbicaciones.Controls.Add(this.groupBoxAccionesUbicaciones);
+            this.tabUbicaciones.Controls.Add(this.groupBoxListaUbicaciones);
+            this.tabUbicaciones.Controls.Add(this.groupBoxDetallesUbicacion);
+            this.tabUbicaciones.Location = new System.Drawing.Point(4, 22);
+            this.tabUbicaciones.Name = "tabUbicaciones";
+            this.tabUbicaciones.Padding = new System.Windows.Forms.Padding(3);
+            this.tabUbicaciones.Size = new System.Drawing.Size(1169, 574);
+            this.tabUbicaciones.TabIndex = 3;
+            this.tabUbicaciones.Text = "Ubicaciones";
+            this.tabUbicaciones.UseVisualStyleBackColor = true;
+            // 
+            // groupBoxAccionesUbicaciones
+            // 
+            this.groupBoxAccionesUbicaciones.Controls.Add(this.btnEliminarUbicacion);
+            this.groupBoxAccionesUbicaciones.Controls.Add(this.btnEditarUbicacion);
+            this.groupBoxAccionesUbicaciones.Controls.Add(this.button3);
+            this.groupBoxAccionesUbicaciones.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.groupBoxAccionesUbicaciones.Location = new System.Drawing.Point(3, 527);
+            this.groupBoxAccionesUbicaciones.Name = "groupBoxAccionesUbicaciones";
+            this.groupBoxAccionesUbicaciones.Size = new System.Drawing.Size(778, 44);
+            this.groupBoxAccionesUbicaciones.TabIndex = 3;
+            this.groupBoxAccionesUbicaciones.TabStop = false;
+            // 
+            // btnEliminarUbicacion
+            // 
+            this.btnEliminarUbicacion.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(53)))), ((int)(((byte)(69)))));
+            this.btnEliminarUbicacion.FlatAppearance.BorderSize = 0;
+            this.btnEliminarUbicacion.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnEliminarUbicacion.ForeColor = System.Drawing.Color.White;
+            this.btnEliminarUbicacion.Location = new System.Drawing.Point(172, 10);
+            this.btnEliminarUbicacion.Name = "btnEliminarUbicacion";
+            this.btnEliminarUbicacion.Size = new System.Drawing.Size(75, 28);
+            this.btnEliminarUbicacion.TabIndex = 2;
+            this.btnEliminarUbicacion.Text = "Eliminar";
+            this.btnEliminarUbicacion.UseVisualStyleBackColor = false;
+            this.btnEliminarUbicacion.Click += new System.EventHandler(this.btnEliminarUbicacion_Click);
+            // 
+            // btnEditarUbicacion
+            // 
+            this.btnEditarUbicacion.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
+            this.btnEditarUbicacion.FlatAppearance.BorderSize = 0;
+            this.btnEditarUbicacion.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnEditarUbicacion.ForeColor = System.Drawing.Color.White;
+            this.btnEditarUbicacion.Location = new System.Drawing.Point(91, 10);
+            this.btnEditarUbicacion.Name = "btnEditarUbicacion";
+            this.btnEditarUbicacion.Size = new System.Drawing.Size(75, 28);
+            this.btnEditarUbicacion.TabIndex = 1;
+            this.btnEditarUbicacion.Text = "Editar";
+            this.btnEditarUbicacion.UseVisualStyleBackColor = false;
+            this.btnEditarUbicacion.Click += new System.EventHandler(this.btnEditarUbicacion_Click);
+            // 
+            // button3
+            // 
+            this.button3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(167)))), ((int)(((byte)(69)))));
+            this.button3.FlatAppearance.BorderSize = 0;
+            this.button3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button3.ForeColor = System.Drawing.Color.White;
+            this.button3.Location = new System.Drawing.Point(10, 10);
+            this.button3.Name = "button3";
+            this.button3.Size = new System.Drawing.Size(75, 28);
+            this.button3.TabIndex = 0;
+            this.button3.Text = "Nueva";
+            this.button3.UseVisualStyleBackColor = false;
+            this.button3.Click += new System.EventHandler(this.btnNuevaUbicacion_Click);
+            // 
+            // groupBoxListaUbicaciones
+            // 
+            this.groupBoxListaUbicaciones.Controls.Add(this.dgvUbicaciones);
+            this.groupBoxListaUbicaciones.Location = new System.Drawing.Point(3, 3);
+            this.groupBoxListaUbicaciones.Name = "groupBoxListaUbicaciones";
+            this.groupBoxListaUbicaciones.Size = new System.Drawing.Size(774, 524);
+            this.groupBoxListaUbicaciones.TabIndex = 2;
+            this.groupBoxListaUbicaciones.TabStop = false;
+            this.groupBoxListaUbicaciones.Text = "Lista de Ubicaciones";
+            // 
+            // dgvUbicaciones
+            // 
+            this.dgvUbicaciones.AllowUserToAddRows = false;
+            this.dgvUbicaciones.AllowUserToDeleteRows = false;
+            this.dgvUbicaciones.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle5.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle5.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle5.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvUbicaciones.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle5;
+            this.dgvUbicaciones.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvUbicaciones.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dgvUbicaciones.Location = new System.Drawing.Point(3, 16);
+            this.dgvUbicaciones.Name = "dgvUbicaciones";
+            this.dgvUbicaciones.ReadOnly = true;
+            this.dgvUbicaciones.RowHeadersWidth = 51;
+            this.dgvUbicaciones.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dgvUbicaciones.Size = new System.Drawing.Size(768, 505);
+            this.dgvUbicaciones.TabIndex = 0;
+            this.dgvUbicaciones.SelectionChanged += new System.EventHandler(this.dgvUbicaciones_SelectionChanged);
+            // 
+            // groupBoxDetallesUbicacion
+            // 
+            this.groupBoxDetallesUbicacion.Controls.Add(this.numNivelUbi);
+            this.groupBoxDetallesUbicacion.Controls.Add(this.lblNivel);
+            this.groupBoxDetallesUbicacion.Controls.Add(this.numEstanteUbi);
+            this.groupBoxDetallesUbicacion.Controls.Add(this.lblEstante);
+            this.groupBoxDetallesUbicacion.Controls.Add(this.txtZonaUbi);
+            this.groupBoxDetallesUbicacion.Controls.Add(this.lblZona);
+            this.groupBoxDetallesUbicacion.Dock = System.Windows.Forms.DockStyle.Right;
+            this.groupBoxDetallesUbicacion.Location = new System.Drawing.Point(781, 3);
+            this.groupBoxDetallesUbicacion.Name = "groupBoxDetallesUbicacion";
+            this.groupBoxDetallesUbicacion.Size = new System.Drawing.Size(385, 568);
+            this.groupBoxDetallesUbicacion.TabIndex = 1;
+            this.groupBoxDetallesUbicacion.TabStop = false;
+            this.groupBoxDetallesUbicacion.Text = "Detalles de la Ubicación";
+            // 
+            // numNivelUbi
+            // 
+            this.numNivelUbi.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.numNivelUbi.Location = new System.Drawing.Point(168, 98);
+            this.numNivelUbi.Maximum = new decimal(new int[] {
+            10000,
+            0,
+            0,
+            0});
+            this.numNivelUbi.Name = "numNivelUbi";
+            this.numNivelUbi.Size = new System.Drawing.Size(132, 21);
+            this.numNivelUbi.TabIndex = 21;
+            this.numNivelUbi.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.numNivelUbi.ThousandsSeparator = true;
+            // 
+            // lblNivel
+            // 
+            this.lblNivel.AutoSize = true;
+            this.lblNivel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblNivel.Location = new System.Drawing.Point(168, 80);
+            this.lblNivel.Name = "lblNivel";
+            this.lblNivel.Size = new System.Drawing.Size(34, 15);
+            this.lblNivel.TabIndex = 23;
+            this.lblNivel.Text = "Nivel";
+            // 
+            // numEstanteUbi
+            // 
+            this.numEstanteUbi.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.numEstanteUbi.Location = new System.Drawing.Point(20, 98);
+            this.numEstanteUbi.Maximum = new decimal(new int[] {
+            10000,
+            0,
+            0,
+            0});
+            this.numEstanteUbi.Name = "numEstanteUbi";
+            this.numEstanteUbi.Size = new System.Drawing.Size(131, 21);
+            this.numEstanteUbi.TabIndex = 20;
+            this.numEstanteUbi.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.numEstanteUbi.ThousandsSeparator = true;
+            // 
+            // lblEstante
+            // 
+            this.lblEstante.AutoSize = true;
+            this.lblEstante.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblEstante.Location = new System.Drawing.Point(20, 80);
+            this.lblEstante.Name = "lblEstante";
+            this.lblEstante.Size = new System.Drawing.Size(48, 15);
+            this.lblEstante.TabIndex = 22;
+            this.lblEstante.Text = "Estante";
+            // 
+            // txtZonaUbi
+            // 
+            this.txtZonaUbi.Location = new System.Drawing.Point(20, 50);
+            this.txtZonaUbi.Name = "txtZonaUbi";
+            this.txtZonaUbi.Size = new System.Drawing.Size(280, 20);
+            this.txtZonaUbi.TabIndex = 1;
+            // 
+            // lblZona
+            // 
+            this.lblZona.AutoSize = true;
+            this.lblZona.Location = new System.Drawing.Point(17, 34);
+            this.lblZona.Name = "lblZona";
+            this.lblZona.Size = new System.Drawing.Size(32, 13);
+            this.lblZona.TabIndex = 0;
+            this.lblZona.Text = "Zona";
+            // 
             // panelInferior
             // 
             this.panelInferior.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(248)))), ((int)(((byte)(249)))), ((int)(((byte)(250)))));
@@ -685,21 +889,12 @@ namespace SistemaFarmacia {
             this.lblTotal.TabIndex = 0;
             this.lblTotal.Text = "Total: 0 items";
             // 
-            // tabUbicaciones
-            // 
-            this.tabUbicaciones.Location = new System.Drawing.Point(4, 22);
-            this.tabUbicaciones.Name = "tabUbicaciones";
-            this.tabUbicaciones.Size = new System.Drawing.Size(1169, 574);
-            this.tabUbicaciones.TabIndex = 3;
-            this.tabUbicaciones.Text = "Ubicaciones";
-            this.tabUbicaciones.UseVisualStyleBackColor = true;
-            // 
             // VentanaPrincipal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1177, 630);
-            this.Controls.Add(this.tabControlPrincipal);
+            this.Controls.Add(this.btnNuevaUbicacion);
             this.Controls.Add(this.panelInferior);
             this.MinimumSize = new System.Drawing.Size(1016, 668);
             this.Name = "VentanaPrincipal";
@@ -707,7 +902,7 @@ namespace SistemaFarmacia {
             this.Text = "Ventana Principal";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.VentanaPrincipal_FormClosed);
             this.Load += new System.EventHandler(this.VentanaPrincipal_Load);
-            this.tabControlPrincipal.ResumeLayout(false);
+            this.btnNuevaUbicacion.ResumeLayout(false);
             this.tabProductos.ResumeLayout(false);
             this.splitContainerProductos.Panel1.ResumeLayout(false);
             this.splitContainerProductos.Panel2.ResumeLayout(false);
@@ -737,6 +932,14 @@ namespace SistemaFarmacia {
             this.groupBoxAccionesCategoria.ResumeLayout(false);
             this.groupBoxDetallesCategoria.ResumeLayout(false);
             this.groupBoxDetallesCategoria.PerformLayout();
+            this.tabUbicaciones.ResumeLayout(false);
+            this.groupBoxAccionesUbicaciones.ResumeLayout(false);
+            this.groupBoxListaUbicaciones.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dgvUbicaciones)).EndInit();
+            this.groupBoxDetallesUbicacion.ResumeLayout(false);
+            this.groupBoxDetallesUbicacion.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numNivelUbi)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numEstanteUbi)).EndInit();
             this.panelInferior.ResumeLayout(false);
             this.panelInferior.PerformLayout();
             this.ResumeLayout(false);
@@ -745,7 +948,7 @@ namespace SistemaFarmacia {
 
         #endregion
 
-        private System.Windows.Forms.TabControl tabControlPrincipal;
+        private System.Windows.Forms.TabControl btnNuevaUbicacion;
         private System.Windows.Forms.TabPage tabProductos;
         private System.Windows.Forms.TabPage tabLaboratorios;
         private System.Windows.Forms.TabPage tabCategorias;
@@ -791,5 +994,18 @@ namespace SistemaFarmacia {
         private System.Windows.Forms.Label lblTotal;
         private System.Windows.Forms.Label lblEstado;
         private TabPage tabUbicaciones;
+        private GroupBox groupBoxListaUbicaciones;
+        private DataGridView dgvUbicaciones;
+        private GroupBox groupBoxDetallesUbicacion;
+        private TextBox txtZonaUbi;
+        private Label lblZona;
+        private GroupBox groupBoxAccionesUbicaciones;
+        private Button btnEliminarUbicacion;
+        private Button btnEditarUbicacion;
+        private Button button3;
+        private NumericUpDown numNivelUbi;
+        private Label lblNivel;
+        private NumericUpDown numEstanteUbi;
+        private Label lblEstante;
     }
 }

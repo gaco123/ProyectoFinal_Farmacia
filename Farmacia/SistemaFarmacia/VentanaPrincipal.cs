@@ -21,6 +21,7 @@ namespace SistemaFarmacia {
         private clsProducto productoSeleccionado = null;
         private clsLaboratorio laboratorioSeleccionado = null;
         private clsCategoria categoriaSeleccionada = null;
+        private clsUbicacion ubicacionSeleccionada = null;
         private clsUsuario usu = null;
 
         private Form ven;
@@ -72,6 +73,13 @@ namespace SistemaFarmacia {
             dgvCategorias.Columns.Add("id", "ID");
             dgvCategorias.Columns.Add("nombre", "Nombre");
             dgvCategorias.Columns.Add("descripcion", "Descripción");
+
+            // Configurar DataGridView de Ubicaciones
+            dgvUbicaciones.AutoGenerateColumns = false;
+            dgvUbicaciones.Columns.Add("id", "ID");
+            dgvUbicaciones.Columns.Add("zona", "Zona");
+            dgvUbicaciones.Columns.Add("estante", "Estante");
+            dgvUbicaciones.Columns.Add("nivel", "Nivel");
         }
 
         private void CargarDatosIniciales() {
@@ -180,6 +188,12 @@ namespace SistemaFarmacia {
             dgvCategorias.Rows.Clear();
             foreach (var cat in listaCategorias) {
                 dgvCategorias.Rows.Add(cat.id, cat.nombre, cat.descripcion);
+            }
+
+            // Actualizar DataGridView de Ubicaciones
+            dgvUbicaciones.Rows.Clear();
+            foreach (var cat in listaUbicaciones) {
+                dgvUbicaciones.Rows.Add(cat.id, cat.zona, cat.estante, cat.nivel);
             }
 
             ActualizarContadores();
@@ -325,11 +339,10 @@ namespace SistemaFarmacia {
 
         private void btnEliminarLaboratorio_Click(object sender, EventArgs e) {
             if (laboratorioSeleccionado != null) {
-                DialogResult result = MessageBox.Show(
-                    $"¿Está seguro de eliminar el laboratorio '{laboratorioSeleccionado.nombre}'?",
-                    "Confirmar eliminación",
-                    MessageBoxButtons.YesNo,
-                    MessageBoxIcon.Question);
+                DialogResult result = MessageBox.Show($"¿Está seguro de eliminar el laboratorio '{laboratorioSeleccionado.nombre}'?"
+                    , "Confirmar eliminación"
+                    , MessageBoxButtons.YesNo
+                    , MessageBoxIcon.Question);
 
                 if (result == DialogResult.Yes) {
                     // Verificar si hay productos asociados
@@ -425,11 +438,10 @@ namespace SistemaFarmacia {
 
         private void btnEliminarCategoria_Click(object sender, EventArgs e) {
             if (categoriaSeleccionada != null) {
-                DialogResult result = MessageBox.Show(
-                    $"¿Está seguro de eliminar la categoría '{categoriaSeleccionada.nombre}'?",
-                    "Confirmar eliminación",
-                    MessageBoxButtons.YesNo,
-                    MessageBoxIcon.Question);
+                DialogResult result = MessageBox.Show($"¿Está seguro de eliminar la categoría '{categoriaSeleccionada.nombre}'?"
+                    , "Confirmar eliminación"
+                    , MessageBoxButtons.YesNo
+                    , MessageBoxIcon.Question);
 
                 if (result == DialogResult.Yes) {
                     // Verificar si hay productos asociados
@@ -478,10 +490,107 @@ namespace SistemaFarmacia {
             categoriaSeleccionada = null;
         }
 
+        // ========== EVENTOS DE UBICAICON ==========
+        private void btnNuevaUbicacion_Click(object sender, EventArgs e) {
+            if (string.IsNullOrWhiteSpace(txtNombreCat.Text)) {
+                MessageBox.Show("El nombre de la ubicación es requerido"
+                    , "Error"
+                    , MessageBoxButtons.OK
+                    , MessageBoxIcon.Error);
+                txtNombreCat.Focus();
+                return;
+            }
+
+            // Nueva Ubicación
+            clsUbicacion nuevaubi = new clsUbicacion {
+                id = 0,
+                zona = txtZonaUbi.Text.Trim(),
+                estante = (int)numEstanteUbi.Value,
+                nivel = (int)numNivelUbi.Value
+            };
+            blUbicacion ubi = new blUbicacion();
+            ubi.agregar_ubicacion(nuevaubi);
+
+            lblEstado.Text = $"Ubicación '{nuevaubi.zona} - {nuevaubi.estante} - {nuevaubi.nivel}' actualizada";
+            CargarDatosIniciales();
+            LimpiarCamposUbicacion();
+        }
+
+        private void btnEditarUbicacion_Click(object sender, EventArgs e) {
+            // Actualizar Categoria
+            clsUbicacion nuevaubi = new clsUbicacion {
+                id = ubicacionSeleccionada.id,
+                zona = txtZonaUbi.Text.Trim(),
+                estante = (int)numEstanteUbi.Value,
+                nivel = (int)numNivelUbi.Value
+            };
+            blUbicacion ubi = new blUbicacion();
+            ubi.actualizar_ubicacion(nuevaubi);
+
+            lblEstado.Text = $"Ubicación '{nuevaubi.zona} - {nuevaubi.estante} - {nuevaubi.nivel}' actualizada";
+            CargarDatosIniciales();
+            LimpiarCamposLaboratorio();
+        }
+
+        private void btnEliminarUbicacion_Click(object sender, EventArgs e) {
+            if (ubicacionSeleccionada != null) {
+                DialogResult result = MessageBox.Show($"¿Está seguro de eliminar la ubicación '{ubicacionSeleccionada.zona} - {ubicacionSeleccionada.estante} - {ubicacionSeleccionada.nivel}'?"
+                    , "Confirmar eliminación"
+                    , MessageBoxButtons.YesNo
+                    , MessageBoxIcon.Question);
+
+                if (result == DialogResult.Yes) {
+                    // Verificar si hay productos asociados
+                    bool tieneProductos = listaProductos.Any(p => p.ubicacion == ubicacionSeleccionada.id);
+
+                    if (tieneProductos) {
+                        MessageBox.Show("No se puede eliminar la ubicación porque tiene productos asociados",
+                            "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        return;
+                    }
+
+                    // Eliminar de la lista
+                    blUbicacion ubi = new blUbicacion();
+                    ubi.eliminar_ubicacion(ubicacionSeleccionada);
+
+                    CargarDatosIniciales();
+                    LimpiarCamposLaboratorio();
+                    lblEstado.Text = $"Ubicación '{ubicacionSeleccionada.zona} - {ubicacionSeleccionada.estante} - {ubicacionSeleccionada.nivel}' eliminada";
+                    ubicacionSeleccionada = null;
+                }
+            }
+            else {
+                MessageBox.Show("Seleccione una ubicación para eliminar", "Advertencia",
+                    MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+        }
+
+        private void dgvUbicaciones_SelectionChanged(object sender, EventArgs e) {
+            if (dgvUbicaciones.SelectedRows.Count > 0) {
+                int id = Convert.ToInt32(dgvUbicaciones.SelectedRows[0].Cells["id"].Value);
+                ubicacionSeleccionada = listaUbicaciones.FirstOrDefault(c => c.id == id);
+                CargarDatosUbicacion();
+            }
+        }
+
+        private void CargarDatosUbicacion() {
+            if (ubicacionSeleccionada != null) {
+                txtZonaUbi.Text = ubicacionSeleccionada.zona;
+                numEstanteUbi.Value = ubicacionSeleccionada.estante;
+                numNivelUbi.Value = ubicacionSeleccionada.nivel;
+            }
+        }
+
+        private void LimpiarCamposUbicacion() {
+            txtZonaUbi.Clear();
+            numEstanteUbi.Value = 0;
+            numNivelUbi.Value = 0;
+        }
+
         // ========== EVENTOS DEL MENÚ ==========
         private void tabControlPrincipal_SelectedIndexChanged(object sender, EventArgs e) {
             // Cuando cambia de pestaña, actualizar el estado
-            switch (tabControlPrincipal.SelectedIndex) {
+            switch (btnNuevaUbicacion.SelectedIndex) {
                 case 0:
                     lblTotal.Text = $"Total: {listaProductos.Count} productos";
                     break;
